@@ -1,0 +1,14 @@
+{
+    "name": "terrylinooo/wp-mathjax",
+    "description": "Render your MathJax TeX syntax on WordPress.",
+    "keywords": ["wordpress-plugin", "math", "mathjax"],
+    "homepage": "https://github.com/terrylinooo/wp-mathjax",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Terry Lin",
+            "email": "contact@terryl.in",
+            "homepage": "https://terryl.in/zh/"
+        }
+    ]
+}
