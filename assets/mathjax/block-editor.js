@@ -9,11 +9,11 @@
 
 ( function( blocks ) {
 
-    blocks.registerBlockType( 'wp-mermaid/block', {
+    blocks.registerBlockType( 'wp-mathjax/block', {
 
 		title: 'WP MathJax',
 	
-		icon: 'chart-pie',
+		icon: 'editor-code',
 	
 		category: 'formatting',
 
@@ -34,12 +34,12 @@
 				props.setAttributes( { content } );
 
 				setTimeout( function() {
-					mermaid.init();
+					mathjaxInit();
 				}, 1000 );
 			}
 			
 			try {
-				rendered = '<div class="mermaid">' + "\n" + content + "\n"  + '</div>';
+				rendered = '<div class="mathjax">' + "\n" + '$$' + "\n" + content + "\n"  + '$$' + "\n" + '</div>';
 				
 			} catch ( e ) {
 				rendered = `<span style='color: red; text-align: center;'>${e}</span>`;
@@ -48,13 +48,13 @@
 			return wp.element.createElement(
 				'div',
 				{
-					className: 'wp-block-mermaid-block-editor'
+					className: 'wp-block-mathjax-block-editor'
 				},
 				[
 					wp.element.createElement(
 						'div',
 						{
-							className: 'mermaid-editor'
+							className: 'mathjax-editor'
 						}, 
 						[
 							wp.element.createElement(
@@ -84,7 +84,7 @@
 			return wp.element.createElement(
 				'div',
 				{
-					className: 'mermaid'
+					className: 'mathjax'
 				},
 				"\n" + content + "\n"
 			);

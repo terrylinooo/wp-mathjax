@@ -8,7 +8,7 @@
  * @version 1.0.0
  */
 
-add_action('init', 'mathjax_block_init');
+add_action( 'init', 'mathjax_block_init' );
 
 /**
  * Initial block.

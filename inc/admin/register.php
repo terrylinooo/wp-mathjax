@@ -8,17 +8,17 @@
  * @version 1.0.0
  */
 
-register_activation_hook( __FILE__, 'wp_mermaid_activation' );
-register_uninstall_hook( __FILE__, 'wp_mermaid_uninstall' );
+register_activation_hook( __FILE__, 'wp_mathjax_activation' );
+register_uninstall_hook( __FILE__, 'wp_mathjax_uninstall' );
 
 /**
  * Assign default setting values while activating this plugin.
  *
  * @return void
  */
-function wp_mermaid_activation() {
-	add_option( 'wp_mermaid_js_source', 'local' );
-	add_option( 'wp_mermaid_uninstall_option', 'yes' );
+function wp_mathjax_activation() {
+	add_option( 'wp_mathjax_js_source', 'local' );
+	add_option( 'wp_mathjax_uninstall_option', 'yes' );
 }
 
 /**
@@ -26,11 +26,11 @@ function wp_mermaid_activation() {
  *
  * @return void
  */
-function wp_mermaid_uninstall() {
-	$option_uninstall = get_option( 'wp_mermaid_uninstall_option' );
+function wp_mathjax_uninstall() {
+	$option_uninstall = get_option( 'wp_mathjax_uninstall_option' );
 
 	if ( 'yes' === $option_uninstall ) {
-		delete_option( 'wp_mermaid_js_source' );
-		delete_option( 'wp_mermaid_uninstall_option' );
+		delete_option( 'wp_mathjax_js_source' );
+		delete_option( 'wp_mathjax_uninstall_option' );
 	}
 }
