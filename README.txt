@@ -10,7 +10,7 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 == Description ==
 
-WP MathJax displays mathematical notation in web browsers, using MathML, LaTeX and AsciiMath markup on WordPress by using MathJax.js.
+WP MathJax displays mathematical notation in web browsers, using MathML, LaTeX and ASCIIMath markup on WordPress by using MathJax.js.
 
 WP MathJax is smart enough that loads mathjax.js only when your posts contain mathjax syntax, by detecting the use of shortcode and block. So it will not be loaded on your website everywhere.
 
@@ -38,8 +38,9 @@ None.
 == Screenshots ==
 
 1. Choose a MathJax syntax block.
-2. Fill in your TeX syntax in the editor.
-2. Fill in your MathML syntax in the editor.
+2. Fill your TeX syntax in the editor.
+3. Fill your MathML syntax in the editor.
+4. Fill your ASCIIMath syntax in the editor.
 
 == Copyright ==
 

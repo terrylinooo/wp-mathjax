@@ -42,6 +42,7 @@ function wp_mathjax_shortcode( $attr, $content = null ) {
 	$content = str_replace( '<br />', "\n", $content );
 	$content = str_replace( array( '<p>', '</p>'), "\n", $content );
 	$content = preg_replace("/[\r\n]+/", "\n", $content);
+
 	$result  = sprintf( "<div class=\"mathjax\">\n%s\n</div>", $content );
 
 	return $result;
