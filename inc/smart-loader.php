@@ -14,6 +14,9 @@ add_action( 'loop_end', 'wp_mathjax_js_smart_loader', 10 );
 // becuase the HTML encoded characters break the syntax.
 remove_filter( 'the_content', 'wptexturize' );
 
+// Decode &lt; and &gt; to make MathML work.
+add_filter( 'the_content', 'wp_specialchars_decode', 1, 1);
+
 /**
  * Detect whether MathJax syntax existed in post content.
  *

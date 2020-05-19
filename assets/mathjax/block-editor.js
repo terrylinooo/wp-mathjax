@@ -9,6 +9,12 @@
 
 ( function( blocks ) {
 
+	if (typeof window.mathjax_input === 'undefined') {
+		console.log( '[wp-mathjax] MathJax input type is undefined.' );
+	} else {
+		var mathjax_input = window.mathjax_input;
+	}
+
     blocks.registerBlockType( 'wp-mathjax/block', {
 
 		title: 'WP MathJax',
@@ -39,10 +45,19 @@
 			}
 			
 			try {
-				rendered = '<div class="mathjax">' + "\n" + '$$' + "\n" + content + "\n"  + '$$' + "\n" + '</div>';
-				
+
+				if ( mathjax_input === 'TeX' ) {
+					rendered = '<div class="mathjax">' + "\n" + '$$' + "\n" + content + "\n"  + '$$' + "\n" + '</div>';
+				} else if ( mathjax_input === 'MathML' ) {
+					rendered = '<div class="mathjax"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML" mode="display">' + "\n" + content + "\n" + '</math></div>';
+				} else if ( mathjax_input === 'ASCIIMathML' ) {
+					rendered = '<div class="mathjax">' + "\n" + '`' + "\n" + content + "\n"  + '``' + "\n" + '</div>';
+				} else {
+					rendered = '<span style="color: red; text-align: center;">Input type is undefined.</span>';
+				}
+
 			} catch ( e ) {
-				rendered = `<span style='color: red; text-align: center;'>${e}</span>`;
+				rendered = `<span style="color: red; text-align: center;">${e}</span>`;
 			}
 
 			return wp.element.createElement(

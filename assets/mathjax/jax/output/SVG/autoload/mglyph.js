@@ -1,15 +1,7 @@
-/* -*- Mode: Javascript; indent-tabs-mode:nil; js-indent-level: 2 -*- */
-/* vim: set ts=2 et sw=2 tw=80: */
-
-/*************************************************************
+/*
+ *  /MathJax-v2/jax/output/SVG/autoload/mglyph.js
  *
- *  MathJax/jax/output/SVG/autoload/mglyph.js
- *
- *  Implements the SVG output for <mglyph> elements.
- *
- *  ---------------------------------------------------------------------
- *
- *  Copyright (c) 2011-2020 The MathJax Consortium
+ *  Copyright (c) 2009-2018 The MathJax Consortium
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -24,84 +16,4 @@
  *  limitations under the License.
  */
 
-MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
-  var VERSION = "2.7.8";
-  var MML = MathJax.ElementJax.mml,
-      SVG = MathJax.OutputJax.SVG,
-      BBOX = SVG.BBOX,
-      LOCALE = MathJax.Localization;
-
-  var XLINKNS = "http://www.w3.org/1999/xlink";
-
-  BBOX.MGLYPH = BBOX.Subclass({
-    type: "image", removeable: false,
-    Init: function (img,w,h,align,mu,scale,def) {
-      if (def == null) {def = {}}
-      var W = img.width*1000/SVG.em, H = img.height*1000/SVG.em;
-      var WW = W, HH = H, y = 0;
-      if (w !== "") {W = SVG.length2em(w,mu,WW) * scale; H = (WW ? W/WW * HH : 0)}
-      if (h !== "") {H = SVG.length2em(h,mu,HH) * scale; if (w === "") {W = (HH ? H/HH * WW : 0)}}
-      if (align !== "" && align.match(/\d/)) {y = SVG.length2em(align,mu) * scale; def.y = -y}
-      def.height = Math.floor(H); def.width = Math.floor(W);
-      def.transform = "translate(0,"+H+") matrix(1 0 0 -1 0 0)";
-      def.preserveAspectRatio = "none";
-      this.SUPER(arguments).Init.call(this,def);
-      this.element.setAttributeNS(XLINKNS,"href",img.SRC);
-      this.w = this.r = W; this.h = this.H = H + y;
-      this.d = this.D = -y; this.l = 0;
-    }
-  });
-
-  MML.mglyph.Augment({
-    toSVG: function (variant,scale) {
-      this.SVGgetStyles(); var svg = this.SVG(), img, err;
-      this.SVGhandleSpace(svg);
-      var values = this.getValues("src","width","height","valign","alt");
-      if (values.src === "") {
-        values = this.getValues("index","fontfamily");
-        if (values.index) {
-          if (!scale) {scale = this.SVGgetScale()}
-          var def = {}; if (values.fontfamily) {def["font-family"] = values.fontfamily}
-          svg.Add(BBOX.TEXT(scale,String.fromCharCode(values.index),def));
-        }
-      } else {
-        if (!this.img) {this.img = MML.mglyph.GLYPH[values.src]}
-        if (!this.img) {
-          this.img = MML.mglyph.GLYPH[values.src] = {img: new Image(), status: "pending"};
-          img = this.img.img;
-          img.onload  = MathJax.Callback(["SVGimgLoaded",this]);
-          img.onerror = MathJax.Callback(["SVGimgError",this]);
-          img.src = img.SRC = values.src;
-          MathJax.Hub.RestartAfter(img.onload);
-        }
-        if (this.img.status !== "OK") {
-          err = MML.Error(
-            LOCALE._(["MathML","BadMglyph"],"Bad mglyph: %1",values.src),
-            {mathsize:"75%"});
-          this.Append(err); svg = err.toSVG(); this.data.pop();
-        } else {
-          var mu = this.SVGgetMu(svg);
-          var SCALE = this.SVGgetScale();
-          svg.Add(BBOX.MGLYPH(this.img.img,values.width,values.height,values.valign,mu,SCALE,
-                              {'aria-label':values.alt}));
-        }
-      }
-      svg.Clean();
-      this.SVGhandleColor(svg);
-      this.SVGsaveData(svg);
-      return svg;
-    },
-    SVGimgLoaded: function (event,status) {
-      if (typeof(event) === "string") {status = event}
-      this.img.status = (status || "OK")
-    },
-    SVGimgError: function () {this.img.img.onload("error")}
-  },{
-    GLYPH: {}    // global list of all loaded glyphs
-  });
-
-  MathJax.Hub.Startup.signal.Post("SVG mglyph Ready");
-  MathJax.Ajax.loadComplete(SVG.autoloadDir+"/mglyph.js");
-
-});
-
+MathJax.Hub.Register.StartupHook("SVG Jax Ready",function(){var d="2.7.8";var a=MathJax.ElementJax.mml,f=MathJax.OutputJax.SVG,b=f.BBOX,e=MathJax.Localization;var c="http://www.w3.org/1999/xlink";b.MGLYPH=b.Subclass({type:"image",removeable:false,Init:function(k,p,l,m,s,j,g){if(g==null){g={}}var i=k.width*1000/f.em,q=k.height*1000/f.em;var r=i,o=q,n=0;if(p!==""){i=f.length2em(p,s,r)*j;q=(r?i/r*o:0)}if(l!==""){q=f.length2em(l,s,o)*j;if(p===""){i=(o?q/o*r:0)}}if(m!==""&&m.match(/\d/)){n=f.length2em(m,s)*j;g.y=-n}g.height=Math.floor(q);g.width=Math.floor(i);g.transform="translate(0,"+q+") matrix(1 0 0 -1 0 0)";g.preserveAspectRatio="none";this.SUPER(arguments).Init.call(this,g);this.element.setAttributeNS(c,"href",k.SRC);this.w=this.r=i;this.h=this.H=q+n;this.d=this.D=-n;this.l=0}});a.mglyph.Augment({toSVG:function(j,h){this.SVGgetStyles();var l=this.SVG(),k,i;this.SVGhandleSpace(l);var m=this.getValues("src","width","height","valign","alt");if(m.src===""){m=this.getValues("index","fontfamily");if(m.index){if(!h){h=this.SVGgetScale()}var g={};if(m.fontfamily){g["font-family"]=m.fontfamily}l.Add(b.TEXT(h,String.fromCharCode(m.index),g))}}else{if(!this.img){this.img=a.mglyph.GLYPH[m.src]}if(!this.img){this.img=a.mglyph.GLYPH[m.src]={img:new Image(),status:"pending"};k=this.img.img;k.onload=MathJax.Callback(["SVGimgLoaded",this]);k.onerror=MathJax.Callback(["SVGimgError",this]);k.src=k.SRC=m.src;MathJax.Hub.RestartAfter(k.onload)}if(this.img.status!=="OK"){i=a.Error(e._(["MathML","BadMglyph"],"Bad mglyph: %1",m.src),{mathsize:"75%"});this.Append(i);l=i.toSVG();this.data.pop()}else{var o=this.SVGgetMu(l);var n=this.SVGgetScale();l.Add(b.MGLYPH(this.img.img,m.width,m.height,m.valign,o,n,{"aria-label":m.alt}))}}l.Clean();this.SVGhandleColor(l);this.SVGsaveData(l);return l},SVGimgLoaded:function(h,g){if(typeof(h)==="string"){g=h}this.img.status=(g||"OK")},SVGimgError:function(){this.img.img.onload("error")}},{GLYPH:{}});MathJax.Hub.Startup.signal.Post("SVG mglyph Ready");MathJax.Ajax.loadComplete(f.autoloadDir+"/mglyph.js")});

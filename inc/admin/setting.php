@@ -18,6 +18,7 @@ add_action( 'admin_init', 'wp_mathjax_settings' );
 function wp_mathjax_settings() {
 
 	register_setting( 'wp_mathjax_setting_group', 'wp_mathjax_js_source' );
+	register_setting( 'wp_mathjax_setting_group', 'wp_mathjax_input_type' );
 	register_setting( 'wp_mathjax_setting_group', 'wp_mathjax_uninstall_option' );
 
 	add_settings_section(
@@ -31,6 +32,14 @@ function wp_mathjax_settings() {
 		'wp_mathjax_js_source',
 		__( 'File Host', 'wp-mathjax' ),
 		'wp_mathjax_js_source_callback',
+		'wp_mathjax_setting_group',
+		'wp_mathjax_basic_section_id'
+	);
+
+	add_settings_field(
+		'wp_mathjax_input_type',
+		__( 'Input Type', 'wp-mathjax' ),
+		'wp_mathjax_input_type_callback',
 		'wp_mathjax_setting_group',
 		'wp_mathjax_basic_section_id'
 	);
@@ -81,6 +90,36 @@ function wp_mathjax_js_source_callback() {
 	<?php
 }
 
+/**
+ * Setting block - The source of Javascript files will be used from.
+ *
+ * @return void
+ */
+function wp_mathjax_input_type_callback() {
+	$option_input_type = get_option( 'wp_mathjax_input_type', 'TeX' );
+	?>
+		<div>
+			<div>
+				<input type="radio" name="wp_mathjax_input_type" id="wp-mathjax-js-input-type-1" value="TeX" <?php checked( $option_input_type, 'TeX' ); ?>>
+				<label for="wp-mathjax-js-library-source-1">
+				<?php echo __( 'TeX', 'wp-mathjax' ); ?> (<?php echo __( 'default', 'wp-mathjax' ); ?>)
+				<label>
+			</div>
+			<div>
+				<input type="radio" name="wp_mathjax_input_type" id="wp-mathjax-js-input-type-2" value="MathML" <?php checked( $option_input_type, 'MathML' ); ?>>
+				<label for="wp-mathjax-js-library-source-2">
+					<?php echo __( 'MathML', 'wp-mathjax' ); ?>
+				<label>
+			</div>
+			<div>
+				<input type="radio" name="wp_mathjax_input_type" id="wp-mathjax-js-input-type-3" value="ASCIIMathML" <?php checked( $option_input_type, 'ASCIIMathML' ); ?>>
+				<label for="wp-mathjax-js-library-source-3">
+					<?php echo __( 'ASCIIMathML', 'wp-mathjax' ); ?>
+				<label>
+			</div>
+		</div>
+	<?php
+}
 
 /**
  * Setting block - The source of Javascript files will be used from.

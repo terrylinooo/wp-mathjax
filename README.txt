@@ -1,6 +1,6 @@
 === WP MathJax ===
 Contributors: Terry Lin
-Tags: markdown, math, mathjax, katex, latex
+Tags: mathjax, katex, latex, asciimath
 Requires at least: 4.0
 Tested up to: 5.4.1
 Stable tag: 1.0.0
@@ -10,7 +10,7 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 == Description ==
 
-WP MathJax displays mathematical notation in web browsers, using MathML, LaTeX and ASCIIMathML markup on WordPress by using MathJax.js.
+WP MathJax displays mathematical notation in web browsers, using MathML, LaTeX and AsciiMath markup on WordPress by using MathJax.js.
 
 WP MathJax is smart enough that loads mathjax.js only when your posts contain mathjax syntax, by detecting the use of shortcode and block. So it will not be loaded on your website everywhere.
 
@@ -38,7 +38,8 @@ None.
 == Screenshots ==
 
 1. Choose a MathJax syntax block.
-2. Fill in your MathJax syntax in the editor.
+2. Fill in your TeX syntax in the editor.
+2. Fill in your MathML syntax in the editor.
 
 == Copyright ==
 
