@@ -8,10 +8,14 @@
  * @version 1.0.0
  */
 
-add_action( 'loop_end', 'wp_mathjax_enqueue_scripts', 20 );
+ // For backend.
 add_action( 'admin_enqueue_scripts', 'wp_mathjax_admin_enqueue_scripts' );
-add_action( 'wp_print_footer_scripts', 'wp_mathjax_print_footer_scripts' );
 add_action( 'admin_print_footer_scripts', 'wp_mathjax_print_footer_scripts' );
+
+// For frontend.
+add_action( 'loop_end', 'wp_mathjax_enqueue_scripts', 20 );
+add_action( 'wp_enqueue_scripts',  'wp_mathjax_enqueue_styles' );
+add_action( 'wp_print_footer_scripts', 'wp_mathjax_print_footer_scripts' );
 
 /**
  * Register JS files for backend use.
@@ -77,11 +81,6 @@ function wp_mathjax_print_footer_scripts() {
 	}
 
 	echo '</script>';
-
-	// Fix Twenty-twenty theme's SVG not showing.
-	echo '<style id="wp-mathjax-style">';
-	echo 'svg { visibility: visible; } ';
-	echo '</style>';
 
 	if ( $load_mathjax_js ) {
 
@@ -167,4 +166,22 @@ function wp_mathjax_print_footer_scripts() {
 		';
 		echo preg_replace( '/\s+/', ' ', $script );
 	}
+}
+
+/**
+ * Print CSS plaintext in page header.
+ * This method will be called by `wp_enqueue_scripts` hook.
+ *
+ * @return void
+ */
+function wp_mathjax_enqueue_styles() {
+	wp_register_style( 'wp-mathjax', false );
+	wp_enqueue_style( 'wp-mathjax' );
+
+	$custom_css = '';
+
+	// Fix Twenty-twenty theme's SVG not showing.
+	$custom_css .= '  svg { visibility: visible; } ';
+
+	wp_add_inline_style( 'wp-mathjax', $custom_css );
 }

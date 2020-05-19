@@ -28,8 +28,8 @@ msgid "Shortcode"
 msgstr "短代碼"
 
 #: inc/admin/menu.php:61
-msgid "In classic editor, you can use shortcode to render your Mermaid syntax."
-msgstr "在傳統編輯器中，您可以使用短代碼來轉譯您的 Mermaid 語法。"
+msgid "In classic editor, you can use shortcode to render your MathJax syntax."
+msgstr "在傳統編輯器中，您可以使用短代碼來轉譯您的 MathJax 語法。"
 
 #: inc/admin/menu.php:62
 msgid ""
@@ -42,12 +42,12 @@ msgid "Gutenberg Block"
 msgstr "Gutenberg 區塊"
 
 #: inc/admin/menu.php:68
-msgid "Choose Mermaid block:"
-msgstr "選擇一個 Mermaid 區塊："
+msgid "Choose MathJax block:"
+msgstr "選擇一個 MathJax 區塊："
 
 #: inc/admin/menu.php:70
-msgid "Fill in your Mermaid syntax in the editor."
-msgstr "填入您的 Mermaid 語法在編輯器中。"
+msgid "Fill in your MathJax syntax in the editor."
+msgstr "填入您的 MathJax 語法在編輯器中。"
 
 #: inc/admin/setting.php:25
 msgid "Basic"
@@ -84,12 +84,12 @@ msgid ""
 msgstr "此外掛預設本地式地載入 MathJax.js，但如果您想以 CDN 服務來使用它，選項在這裡。 "
 
 #: inc/admin/setting.php:98
-msgid "Remove WP-Mermaid generated data."
-msgstr "移除 WP-Mermaid 產生的資料。"
+msgid "Remove WP-MathJax generated data."
+msgstr "移除 WP-MathJax 產生的資料。"
 
 #: inc/admin/setting.php:105
-msgid "Keep WP-Mermaid generated data."
-msgstr "保持 WP-Mermaid 產生的資料。"
+msgid "Keep WP-MathJax generated data."
+msgstr "保持 WP-MathJax 產生的資料。"
 
 #: inc/admin/setting.php:109
 msgid "This option only works when you uninstall this plugin."

@@ -10,12 +10,12 @@
 
 add_action( 'loop_end', 'wp_mathjax_js_smart_loader', 10 );
 
-// We need to remove `wptexturize` to make the Mermaid syntax work as expected,
+// We need to remove `wptexturize` to make the MathJax syntax work as expected,
 // becuase the HTML encoded characters break the syntax.
 remove_filter( 'the_content', 'wptexturize' );
 
 /**
- * Detect whether Mermaid syntax existed in post content.
+ * Detect whether MathJax syntax existed in post content.
  *
  * @since 1.0.0
  * @return void
@@ -40,7 +40,7 @@ function is_mathjax_loaded_on_post() {
 
     
     if ( false !== stripos( $post_content, 'wp-block-wp-mathjax-block' ) ) {
-        // Detect whether post content contains WP-Mermaid block.
+        // Detect whether post content contains WP-MathJax block.
         $is_mathjax = true; 
 
     } else {
