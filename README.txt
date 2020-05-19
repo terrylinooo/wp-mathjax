@@ -1,5 +1,5 @@
 === WP MathJax ===
-Contributors: Terry Lin
+Contributors: terrylin
 Tags: mathjax, katex, latex, asciimath
 Requires at least: 4.0
 Tested up to: 5.4.1
