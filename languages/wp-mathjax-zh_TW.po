@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SEO Search Permalink\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-15 02:59+0000\n"
-"PO-Revision-Date: 2020-05-15 03:02+0000\n"
+"POT-Creation-Date: 2020-06-09 06:46+0000\n"
+"PO-Revision-Date: 2020-06-09 06:52+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (Taiwan)\n"
 "Language: zh_TW\n"
@@ -19,87 +19,105 @@ msgstr ""
 msgid "WP MathJax"
 msgstr "WP MathJax"
 
-#: inc/admin/menu.php:56
+#: inc/admin/menu.php:59
 msgid "How to Use"
 msgstr "使用指南"
 
-#: inc/admin/menu.php:58
+#: inc/admin/menu.php:61
 msgid "Shortcode"
 msgstr "短代碼"
 
-#: inc/admin/menu.php:61
+#: inc/admin/menu.php:64
 msgid "In classic editor, you can use shortcode to render your MathJax syntax."
 msgstr "在傳統編輯器中，您可以使用短代碼來轉譯您的 MathJax 語法。"
 
-#: inc/admin/menu.php:62
+#: inc/admin/menu.php:65
 msgid ""
 "If you are using WordPress version below 5.0, this is the only way you can "
 "use."
 msgstr "如果您正使用的 WordPress 版本在 5.0  以下，您只能使用這個方式。"
 
-#: inc/admin/menu.php:66
+#: inc/admin/menu.php:69
 msgid "Gutenberg Block"
 msgstr "Gutenberg 區塊"
 
-#: inc/admin/menu.php:68
+#: inc/admin/menu.php:71
 msgid "Choose MathJax block:"
 msgstr "選擇一個 MathJax 區塊："
 
-#: inc/admin/menu.php:70
+#: inc/admin/menu.php:73
 msgid "Fill in your MathJax syntax in the editor."
 msgstr "填入您的 MathJax 語法在編輯器中。"
 
-#: inc/admin/setting.php:25
+#: inc/admin/setting.php:26
 msgid "Basic"
 msgstr "基本設定"
 
-#: inc/admin/setting.php:32
+#: inc/admin/setting.php:33
 msgid "File Host"
 msgstr "檔案代管"
 
-#: inc/admin/setting.php:40
+#: inc/admin/setting.php:41
+msgid "Input Type"
+msgstr "輸入類型"
+
+#: inc/admin/setting.php:49
 msgid "Uninstall Option"
 msgstr "移除選項"
 
-#: inc/admin/setting.php:63
+#: inc/admin/setting.php:72
 msgid "Local"
 msgstr "本地端"
 
-#: inc/admin/setting.php:63
+#: inc/admin/setting.php:72 inc/admin/setting.php:105
 msgid "default"
 msgstr "預設值"
 
-#: inc/admin/setting.php:69
+#: inc/admin/setting.php:78
 msgid "cdn.cloudflare.com"
 msgstr "cdn.cloudflare.com"
 
-#: inc/admin/setting.php:76
+#: inc/admin/setting.php:85
 msgid "cdn.jsdelivr.net"
 msgstr "cdn.jsdelivr.net"
 
-#: inc/admin/setting.php:80
+#: inc/admin/setting.php:89
 msgid ""
 "This plugin loads MathJax.js locally by default, but if you would like to "
 "use it with a CDN service, here is the option."
 msgstr "此外掛預設本地式地載入 MathJax.js，但如果您想以 CDN 服務來使用它，選項在這裡。 "
 
-#: inc/admin/setting.php:98
-msgid "Remove WP-MathJax generated data."
-msgstr "移除 WP-MathJax 產生的資料。"
-
 #: inc/admin/setting.php:105
-msgid "Keep WP-MathJax generated data."
-msgstr "保持 WP-MathJax 產生的資料。"
+msgid "TeX"
+msgstr "TeX"
 
-#: inc/admin/setting.php:109
+#: inc/admin/setting.php:111
+msgid "MathML"
+msgstr "MathML"
+
+#: inc/admin/setting.php:117
+msgid "ASCIIMathML"
+msgstr "ASCIIMathML"
+
+#: inc/admin/setting.php:137
+msgid "Remove WP Mathjax generated data."
+msgstr "移除 WP Mathjax 產生的資料。"
+
+#: inc/admin/setting.php:144
+msgid "Keep WP Mathjax generated data."
+msgstr "保持 WP Mathjax 產生的資料。"
+
+#: inc/admin/setting.php:148
 msgid "This option only works when you uninstall this plugin."
 msgstr "這個選項只在您移除此外掛時作用。"
 
 #. Description of the plugin
 msgid ""
-"Generation of diagrams and flowcharts from text in a similar manner as "
-"markdown by using MathJax.js"
-msgstr "通過使用 MathJax.js 以類似 markdown 語法的方式，從文字生成圖表和流程圖。"
+"WP MathJax displays mathematical notation in web browsers, using MathML, "
+"LaTeX and ASCIIMathML markup on WordPress by using MathJax.js."
+msgstr ""
+"WP MathJax 利用 MathJax.js 在瀏覽器中顯示數學符號，在 WordPress 上使用 MathML、LaTeX 及 "
+"ASCIIMathML 裝飾語法。"
 
 #. URI of the plugin
 msgid "https://github.com/terrylinooo/wp-mathjax"
