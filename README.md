@@ -2,6 +2,14 @@
 
 WP Mathjax displays mathematical notation in web browsers, using MathML, LaTeX and ASCIIMathML markup on WordPress by using MathJax.js.
 
+## Download
+
+| source | download | 
+| --- | --- | 
+| WordPress | https://wordpress.org/plugins/wp-mathjax-plus |
+| GitHub repository | https://github.com/terrylinooo/wp-mathjax/releases | 
+| PHP Composer | `composer create-project terrylinooo/wp-mathjax wp-mathjax` |
+
 ## Installation
 
 1. Upload the plugin files to the `/wp-content/plugins/wp-mathjax` directory, or install the plugin through the WordPress plugins screen directly.
