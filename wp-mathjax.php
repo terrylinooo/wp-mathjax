@@ -65,7 +65,7 @@ define('MATHJAX_PLUGIN_PATH', __FILE__);
 define('MATHJAX_PLUGIN_LANGUAGE_PACK', dirname(plugin_basename(__FILE__)) . '/languages');
 define('MATHJAX_PLUGIN_VERSION', '1.0.0');
 define('MATHJAX_PLUGIN_TEXT_DOMAIN', 'wp-mathjax');
-define('MATHJAX_JS_VERSION', '3.2.0');
+define('MATHJAX_JS_VERSION', '2.7.8');
 
 // Support WordPress version 4.7 and below.
 if (!function_exists('wp_doing_ajax')) {
