@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WP MathJax
  *
@@ -34,7 +35,7 @@
  * Star it, fork it, share it if you like this plugin.
  */
 
-if ( ! defined( 'WPINC' ) ) {
+if (!defined('WPINC')) {
 	die;
 }
 
@@ -57,37 +58,38 @@ if ( ! defined( 'WPINC' ) ) {
  * MATHJAX_PLUGIN_LANGUAGE_PACK : wp-mathjax/languages
  */
 
-define( 'MATHJAX_PLUGIN_NAME', plugin_basename( __FILE__ ) );
-define( 'MATHJAX_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'MATHJAX_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'MATHJAX_PLUGIN_PATH', __FILE__ );
-define( 'MATHJAX_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'MATHJAX_PLUGIN_VERSION', '1.0.0' );
-define( 'MATHJAX_PLUGIN_TEXT_DOMAIN', 'wp-mathjax' );
-define( 'MATHJAX_JS_VERSION', '8.5.0' );
+define('MATHJAX_PLUGIN_NAME', plugin_basename(__FILE__));
+define('MATHJAX_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('MATHJAX_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('MATHJAX_PLUGIN_PATH', __FILE__);
+define('MATHJAX_PLUGIN_LANGUAGE_PACK', dirname(plugin_basename(__FILE__)) . '/languages');
+define('MATHJAX_PLUGIN_VERSION', '1.0.0');
+define('MATHJAX_PLUGIN_TEXT_DOMAIN', 'wp-mathjax');
+define('MATHJAX_JS_VERSION', '3.2.0');
 
 // Support WordPress version 4.7 and below.
-if ( ! function_exists( 'wp_doing_ajax' ) ) {
-	function wp_doing_ajax() {
+if (!function_exists('wp_doing_ajax')) {
+	function wp_doing_ajax()
+	{
 		return false;
 	}
 }
 
-if ( ! wp_doing_ajax() ) {
+if (!wp_doing_ajax()) {
 
-	load_plugin_textdomain( 'wp-mathjax', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
+	load_plugin_textdomain('wp-mathjax', false, basename(dirname(__FILE__)) . '/languages');
 
-	if ( is_admin() ) {
-		require_once plugin_dir_path( __FILE__ ) . 'inc/admin/register.php';
-		require_once plugin_dir_path( __FILE__ ) . 'inc/admin/setting.php';
-		require_once plugin_dir_path( __FILE__ ) . 'inc/admin/menu.php';
+	if (is_admin()) {
+		require_once plugin_dir_path(__FILE__) . 'inc/admin/register.php';
+		require_once plugin_dir_path(__FILE__) . 'inc/admin/setting.php';
+		require_once plugin_dir_path(__FILE__) . 'inc/admin/menu.php';
 	}
 
 	// This is a global variable we use to identify where we want to use MathJax.js
 	$load_mathjax_js  = false;
 
-	require_once plugin_dir_path( __FILE__ ) . 'inc/block.php';
-	require_once plugin_dir_path( __FILE__ ) . 'inc/shortcode.php';
-	require_once plugin_dir_path( __FILE__ ) . 'inc/smart-loader.php';
-	require_once plugin_dir_path( __FILE__ ) . 'inc/mathjax-js.php';
+	require_once plugin_dir_path(__FILE__) . 'inc/block.php';
+	require_once plugin_dir_path(__FILE__) . 'inc/shortcode.php';
+	require_once plugin_dir_path(__FILE__) . 'inc/smart-loader.php';
+	require_once plugin_dir_path(__FILE__) . 'inc/mathjax-js.php';
 }
