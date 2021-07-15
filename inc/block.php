@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WP MathJax - Gutenberg Block.
  *
@@ -8,37 +9,38 @@
  * @version 1.0.0
  */
 
-add_action( 'init', 'mathjax_block_init' );
+add_action('init', 'mathjax_block_init');
 
 /**
  * Initial block.
  *
  * @return void
  */
-function mathjax_block_init() {
+function mathjax_block_init()
+{
 
-    if ( ! function_exists( 'register_block_type' ) ) {
-		// Gutenberg is not active.
-		return;
-	}
+    if (!function_exists('register_block_type')) {
+        // Gutenberg is not active.
+        return;
+    }
 
     wp_register_script(
         'mathjax-gutenberg-block',
-        plugins_url( 'assets/mathjax/block-editor.js', dirname( __FILE__ ) ),
-        array( 'wp-blocks', 'wp-element' )
+        plugins_url('assets/mathjax/block-editor.js', dirname(__FILE__)),
+        array('wp-blocks', 'wp-element')
     );
 
     wp_register_style(
         'mathjax-gutenberg-block',
-        plugins_url( 'assets/mathjax/block-editor.css', dirname( __FILE__ ) ),
-        array( 'wp-edit-blocks' )
+        plugins_url('assets/mathjax/block-editor.css', dirname(__FILE__)),
+        array('wp-edit-blocks')
     );
 
-    register_block_type( 'wp-mathjax/display-block', array(
+    register_block_type('wp-mathjax/display-block', array(
         'editor_script'   => 'mathjax-gutenberg-block',
         'editor_style'    => 'mathjax-gutenberg-block',
         'render_callback' => 'mathjax_display_block_render',
-    ) );
+    ));
 }
 
 /**
@@ -48,7 +50,8 @@ function mathjax_block_init() {
  * @param string $content
  * @return string
  */
-function mathjax_display_block_render( $attr, $content = null ) {
+function mathjax_display_block_render($attr, $content = null)
+{
     global $load_mathjax_js;
     $load_mathjax_js = true;
     return $content;
