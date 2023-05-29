@@ -2,8 +2,8 @@
 Contributors: terrylin
 Tags: mathjax, katex, latex, asciimath
 Requires at least: 4.0
-Tested up to: 5.4.1
-Stable tag: 1.0.0
+Tested up to: 6.2.2
+Stable tag: 1.0.1
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -24,7 +24,7 @@ If you are not using Guteberg editor and looking for a [Markdown editor](https:/
 
 = Shortcode =
 
-In classic editor, you can use shortcode to render your MathJax syntax. If you are using WordPress version below 5.0, this is the only way you can use.
+In classic editor, you can use the shortcode to render your MathJax syntax. If you are using WordPress version below 5.0, this is the only way you can use this feature.
 
 = Gutenberg Block =
 
@@ -62,5 +62,11 @@ GNU General Public License for more details.
 = 1.0.0 =
 
 - First release.
+
+= 1.0.1 =
+
+- Test up to PHP 8.2.5 and WordPress 6.2.2
+- Add Japanese translation, thanks to [Colocal](https://colocal.com).
+- Upgrade MathJax.js from 2.7.8 to 2.7.9
 
 == Upgrade Notice ==

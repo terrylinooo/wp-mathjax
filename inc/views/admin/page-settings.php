@@ -32,8 +32,8 @@ if ( ! defined( 'MATHJAX_PLUGIN_NAME' ) ) {
 		<h4><?php echo __( 'Shortcode', 'wp-mathjax' ); ?></h4>
 		<blockquote>
 			<p>
-				<?php echo __( 'In classic editor, you can use shortcode to render your MathJax syntax.', 'wp-mathjax' ); ?><br />
-				<?php echo __( 'If you are using WordPress version below 5.0, this is the only way you can use.', 'wp-mathjax' ); ?>
+				<?php echo __( 'In classic editor, you can use the shortcode to render your MathJax syntax.', 'wp-mathjax' ); ?><br />
+				<?php echo __( 'If you are using WordPress version below 5.0, this is the only way you can use this feature.', 'wp-mathjax' ); ?>
 			</p>
 			<code style="background-color: white; padding: 10px; margin: 10px 0; display: inline-block;">[mathjax] ... [/mathjax]</code>
 		</blockquote>

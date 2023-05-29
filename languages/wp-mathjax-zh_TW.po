@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: SEO Search Permalink\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-09 06:46+0000\n"
-"PO-Revision-Date: 2020-06-09 06:52+0000\n"
-"Last-Translator: Terry Lin <contact@terryl.in>\n"
+"PO-Revision-Date: 2023-05-29 08:13+0000\n"
+"Last-Translator: \n"
 "Language-Team: Chinese (Taiwan)\n"
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.3.1; wp-5.4.1"
+"X-Loco-Version: 2.6.1; wp-6.2.2"
 
 #. Name of the plugin
 #: inc/admin/menu.php:22 inc/admin/menu.php:23
@@ -28,13 +28,11 @@ msgid "Shortcode"
 msgstr "短代碼"
 
 #: inc/admin/menu.php:64
-msgid "In classic editor, you can use shortcode to render your MathJax syntax."
+msgid "In classic editor, you can use the shortcode to render your MathJax syntax."
 msgstr "在傳統編輯器中，您可以使用短代碼來轉譯您的 MathJax 語法。"
 
 #: inc/admin/menu.php:65
-msgid ""
-"If you are using WordPress version below 5.0, this is the only way you can "
-"use."
+msgid "If you are using WordPress version below 5.0, this is the only way you can use this feature."
 msgstr "如果您正使用的 WordPress 版本在 5.0  以下，您只能使用這個方式。"
 
 #: inc/admin/menu.php:69
@@ -82,9 +80,7 @@ msgid "cdn.jsdelivr.net"
 msgstr "cdn.jsdelivr.net"
 
 #: inc/admin/setting.php:89
-msgid ""
-"This plugin loads MathJax.js locally by default, but if you would like to "
-"use it with a CDN service, here is the option."
+msgid "This plugin loads MathJax.js locally by default, but if you would like to use it with a CDN service, here is the option."
 msgstr "此外掛預設本地式地載入 MathJax.js，但如果您想以 CDN 服務來使用它，選項在這裡。 "
 
 #: inc/admin/setting.php:105
@@ -112,12 +108,8 @@ msgid "This option only works when you uninstall this plugin."
 msgstr "這個選項只在您移除此外掛時作用。"
 
 #. Description of the plugin
-msgid ""
-"WP MathJax displays mathematical notation in web browsers, using MathML, "
-"LaTeX and ASCIIMathML markup on WordPress by using MathJax.js."
-msgstr ""
-"WP MathJax 利用 MathJax.js 在瀏覽器中顯示數學符號，在 WordPress 上使用 MathML、LaTeX 及 "
-"ASCIIMathML 裝飾語法。"
+msgid "WP MathJax displays mathematical notation in web browsers, using MathML, LaTeX and ASCIIMathML markup on WordPress by using MathJax.js."
+msgstr "WP MathJax 利用 MathJax.js 在瀏覽器中顯示數學符號，在 WordPress 上使用 MathML、LaTeX 及 ASCIIMathML 裝飾語法。"
 
 #. URI of the plugin
 msgid "https://github.com/terrylinooo/wp-mathjax"

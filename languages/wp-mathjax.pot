@@ -29,13 +29,13 @@ msgid "Shortcode"
 msgstr ""
 
 #: inc/admin/menu.php:64
-msgid "In classic editor, you can use shortcode to render your MathJax syntax."
+msgid "In classic editor, you can use the shortcode to render your MathJax syntax."
 msgstr ""
 
 #: inc/admin/menu.php:65
 msgid ""
 "If you are using WordPress version below 5.0, this is the only way you can "
-"use."
+"use this feature."
 msgstr ""
 
 #: inc/admin/menu.php:69

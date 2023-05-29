@@ -22,7 +22,7 @@ WP Mathjax is smart enough that loads mathjax.js only when your posts contain ma
 
 ### Shortcode
 
-In classic editor, you can use shortcode to render your mathjax syntax. If you are using WordPress version below 5.0, this is the only way you can use.
+In classic editor, you can use the shortcode to render your mathjax syntax. If you are using WordPress version below 5.0, this is the only way you can use this feature.
 
 
 ```
@@ -40,6 +40,16 @@ Choose a mathjax block:
 Fill in your mathjax syntax in the editor.
 
 ![](assets/example-gutenberg-block-2.png)
+
+### Changelog
+
+- 1.0.0
+    - First release.
+
+- 1.0.1
+    - Test up to PHP 8.2.5 and WordPress 6.2.2
+    - Add Japanese translation, thanks to [Colocal](https://colocal.com).
+    - Upgrade MathJax.js from 2.7.8 to 2.7.9
 
 ### License
 
