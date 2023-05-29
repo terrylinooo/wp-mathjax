@@ -8,14 +8,14 @@
  * @version 1.0.0
  */
 
- // For backend.
+// For backend.
 add_action( 'admin_enqueue_scripts', 'wp_mathjax_admin_enqueue_scripts' );
 add_action( 'admin_print_footer_scripts', 'wp_mathjax_print_footer_scripts' );
 add_action( 'admin_print_scripts', 'wp_mathjax_print_scripts' );
 
 // For frontend.
 add_action( 'loop_end', 'wp_mathjax_enqueue_scripts', 20 );
-add_action( 'wp_enqueue_scripts',  'wp_mathjax_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'wp_mathjax_enqueue_styles' );
 add_action( 'wp_print_footer_scripts', 'wp_mathjax_print_scripts', -10 );
 add_action( 'wp_print_footer_scripts', 'wp_mathjax_print_footer_scripts', 20 );
 
@@ -89,7 +89,7 @@ function wp_mathjax_print_scripts() {
 			$script .= 'var is_single_post = false;';
 		}
 
-		$script .=  '</script>';
+		$script .= '</script>';
 
 		if ( 'MathML' === $option_input_type ) {
 			$script .= '

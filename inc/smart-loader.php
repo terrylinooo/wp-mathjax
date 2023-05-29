@@ -15,7 +15,7 @@ add_action( 'loop_end', 'wp_mathjax_js_smart_loader', 10 );
 remove_filter( 'the_content', 'wptexturize' );
 
 // Decode &lt; and &gt; to make MathML work.
-add_filter( 'the_content', 'wp_specialchars_decode', 1, 1);
+add_filter( 'the_content', 'wp_specialchars_decode', 1, 1 );
 
 /**
  * Detect whether MathJax syntax existed in post content.
@@ -24,11 +24,11 @@ add_filter( 'the_content', 'wp_specialchars_decode', 1, 1);
  * @return void
  */
 function wp_mathjax_js_smart_loader() {
-    global $load_mathjax_js;
+	global $load_mathjax_js;
 
-    if ( is_mathjax_loaded_on_post() ) {
-        $load_mathjax_js = true; 
-    }
+	if ( is_mathjax_loaded_on_post() ) {
+		$load_mathjax_js = true;
+	}
 }
 
 /**
@@ -38,24 +38,23 @@ function wp_mathjax_js_smart_loader() {
  * @return bool
  */
 function is_mathjax_loaded_on_post() {
-    $is_mathjax   = false;
-    $post_content = get_the_content();
+	$is_mathjax   = false;
+	$post_content = get_the_content();
 
-    
-    if ( false !== stripos( $post_content, 'wp-block-wp-mathjax-block' ) ) {
-        // Detect whether post content contains WP-MathJax block.
-        $is_mathjax = true; 
+	if ( false !== stripos( $post_content, 'wp-block-wp-mathjax-block' ) ) {
+		// Detect whether post content contains WP-MathJax block.
+		$is_mathjax = true;
 
-    } else {
+	} else {
 
-        if (
-            // We also support Markdown code block, for example: ```mathjax and HTML `<div class="mathjax">`
-            false !== stripos( $post_content, ' class="mathjax">' ) ||
-            false !== stripos( $post_content, ' class="language-mathjax">' )
-        ) {
-            $is_mathjax = true; 
-        }
-    }
+		if (
+			// We also support Markdown code block, for example: ```mathjax and HTML `<div class="mathjax">`
+			false !== stripos( $post_content, ' class="mathjax">' ) ||
+			false !== stripos( $post_content, ' class="language-mathjax">' )
+		) {
+			$is_mathjax = true;
+		}
+	}
 
-    return $is_mathjax;
+	return $is_mathjax;
 }

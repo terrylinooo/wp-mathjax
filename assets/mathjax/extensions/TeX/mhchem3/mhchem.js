@@ -1,6 +1,3 @@
-/* -*- Mode: Javascript; indent-tabs-mode:nil; js-indent-level: 2 -*- */
-/* vim: set ts=2 et sw=2 tw=80: */
-
 /*************************************************************
  *
  *  MathJax/extensions/TeX/mhchem.js
@@ -25,1750 +22,270 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+MathJax.Extension["TeX/mhchem"]={version:"3.3.2"},MathJax.Hub.Register.StartupHook("TeX Jax Ready",function(){var n=MathJax.InputJax.TeX,a=MathJax.Object.Subclass({string:"",
+Init:function(t){this.string=t},
+Parse:function(t){try{return u.go(x.go(this.string,t))}catch(t){n.Error(t)}}}),x={
+go:function(t,n){if(!t)return[];void 0===n&&(n="ce");var e,a="0",o={};o["@@"]=0,t=(t=(t=t.replace(/\n/g," ")).replace(/[\u2212\u2013\u2014\u2010]/g,"-")).replace(/[\u2026]/g,"...");for(var r=10,i=[];;){e!==t?(r=10,e=t):r--;var c=x.t[n],u=c.u[a]||c.u["*"];t:for(var s=0;s<u.length;s++){var p=x._.s(u[s].pattern,t);if(p){for(var _=u[s].task,f=0;f<_.h.length;f++){var h;if(c.m[_.h[f].l])h=c.m[_.h[f].l](o,p.s,_.h[f].S);else{if(!x.m[_.h[f].l])throw["MhchemBugA","mhchem bug A. Please report. ("+_.h[f].l+")"];h=x.m[_.h[f].l](o,p.s,_.h[f].S)}x.v(i,h)}if(a=_.g||a,!(0<t.length))return i;if(_.k||(t=p.$),!_.A)break t}}if(r<=0)throw["MhchemBugU","mhchem bug U. Please report."]}},
+v:function(t,n){if(n)if("[object Array]"===Object.prototype.toString.call(n))for(var e=0;e<n.length;e++)t.push(n[e]);else t.push(n)},_:{_:{"~z":/^$/,"~x":/^./,"~y":/^./,"%j":/^\s/,"%i":/^\s(?=[A-Z\\$])/,"`e":/^\s$/,"@X":/^[a-z]/,x:/^x/,x$:/^x$/,i$:/^i$/,"~J":/^(?:[a-zA-Z\u03B1-\u03C9\u0391-\u03A9?@]|(?:\\(?:alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega)(?:\s+|\{\}|(?![a-zA-Z]))))+/,"@A":/^\\(?:alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega)(?:\s+|\{\}|(?![a-zA-Z]))/,"~M":/^(?:([a-z])(?:$|[^a-zA-Z]))$/,"@a":/^\$(?:([a-z])(?:$|[^a-zA-Z]))\$$/,"~L":/^(?:\$?[\u03B1-\u03C9]\$?|\$?\\(?:alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega)\s*\$?)(?:\s+|\{\}|(?![a-zA-Z]))$/,"~r":/^[0-9]+/,"@i":/^[+\-]?(?:[0-9]+(?:[,.][0-9]+)?|[0-9]*(?:\.[0-9]+))/,"@h":/^[+\-]?[0-9]+(?:[.,][0-9]+)?/,
+"%Q":function(t){var n=t.match(/^(\+\-|\+\/\-|\+|\-|\\pm\s?)?([0-9]+(?:[,.][0-9]+)?|[0-9]*(?:\.[0-9]+))?(\((?:[0-9]+(?:[,.][0-9]+)?|[0-9]*(?:\.[0-9]+))\))?(?:(?:([eE])|\s*(\*|x|\\times|\u00D7)\s*10\^)([+\-]?[0-9]+|\{[+\-]?[0-9]+\}))?/);return n&&n[0]?{s:n.slice(1),$:t.substr(n[0].length)}:null},
+"`a":function(t){var n=t.match(/^(\+\-|\+\/\-|\+|\-|\\pm\s?)?([0-9]+(?:[,.][0-9]+)?|[0-9]*(?:\.[0-9]+)?)\^([+\-]?[0-9]+|\{[+\-]?[0-9]+\})/);return n&&n[0]?{s:n.slice(1),$:t.substr(n[0].length)}:null},
+"%k":function(t){var n=x._.M(t,"",/^\([a-z]{1,3}(?=[\),])/,")","");if(n&&n.$.match(/^($|[\s,;\)\]\}])/))return n;var e=t.match(/^(?:\((?:\\ca\s?)?\$[amothc]\$\))/);return e?{s:e[0],$:t.substr(e[0].length)}:null},"`~":/^_\{(\([a-z]{1,3}\))\}/,"@L":/^(?:\\\{|\[|\()/,"@d":/^(?:\)|\]|\\\})/,", ":/^[,;]\s*/,",":/^[,;]/,".":/^[.]/,". ":/^([.\u22C5\u00B7\u2022])\s*/,"@j":/^\.\.\.(?=$|[^.])/,"* ":/^([*])\s*/,
+"@Q":function(t){return x._.M(t,"^{","","","}")},
+"@M":function(t){return x._.M(t,"^","$","$","")},"^a":/^\^([0-9]+|[^\\_])/,
+"@P":function(t){return x._.M(t,"^",/^\\[a-zA-Z]+\{/,"}","","","{","}","",!0)},
+"@O":function(t){return x._.M(t,"^",/^\\[a-zA-Z]+\{/,"}","")},"^\\x":/^\^(\\[a-zA-Z]+)\s*/,"%R":/^\^(-?\d+)/,"'":/^'/,
+"@V":function(t){return x._.M(t,"_{","","","}")},
+"@R":function(t){return x._.M(t,"_","$","$","")},_9:/^_([+\-]?[0-9]+|[^\\])/,
+"@U":function(t){return x._.M(t,"_",/^\\[a-zA-Z]+\{/,"}","","","{","}","",!0)},
+"@T":function(t){return x._.M(t,"_",/^\\[a-zA-Z]+\{/,"}","")},"@S":/^_(\\[a-zA-Z]+)\s*/,"^_":/^(?:\^(?=_)|\_(?=\^)|[\^_]$)/,"{}":/^\{\}/,
+"%y":function(t){return x._.M(t,"","{","}","")},
+"%x":function(t){return x._.M(t,"{","","","}")},
+"@`":function(t){return x._.M(t,"","$","$","")},
+"@b":function(t){return x._.M(t,"${","","","}$")},
+"@%":function(t){return x._.M(t,"$","","","$")},"%A":/^[=<>]/,"#":/^[#\u2261]/,"+":/^\+/,"-$":/^-(?=[\s_},;\]/]|$|\([a-z]+\))/,"-9":/^-(?=[0-9])/,"@g":/^-(?=(?:[spd]|sp)(?:$|[\s,;\)\]\}]))/,"-":/^-/,"``":/^(?:\\pm|\$\\pm\$|\+-|\+\/-)/,"~N":/^(?:\+|(?:[\-=<>]|<<|>>|\\approx|\$\\approx\$)(?=\s|$|-?[0-9]))/,"~`":/^(?:v|\(v\)|\^|\(\^\))(?=$|[\s,;\)\]\}])/,
+"@s":function(t){return x._.M(t,"\\bond{","","","}")},"->":/^(?:<->|<-->|->|<-|<=>>|<<=>|<=>|[\u2192\u27F6\u21CC])/,"@n":/^[CMT](?=\[)/,
+"@p":function(t){return x._.M(t,"[","","","]")},"`c":/^(&|@r|\\hline)\s*/,"@q":/^(?:\\[,\ ;:])/,
+"@H":function(t){return x._.M(t,"",/^\\[a-zA-Z]+\{/,"}","","","{","}","",!0)},
+"@G":function(t){return x._.M(t,"",/^\\[a-zA-Z]+\{/,"}","")},"@u":/^\\ca(?:\s+|(?![a-zA-Z]))/,"@F":/^(?:\\[a-zA-Z]+\s*|\\[_&{}%])/,"~O":/^(?:[0-9]{1,2}[spdfgh]|[0-9]{0,2}sp)(?=$|[^a-zA-Z])/,"~P":/^[\/~|]/,
+"@z":function(t){return x._.M(t,"\\frac{","","","}","{","","","}")},
+"@B":function(t){return x._.M(t,"\\overset{","","","}","{","","","}")},
+"@D":function(t){return x._.M(t,"\\underset{","","","}","{","","","}")},
+"@C":function(t){return x._.M(t,"\\underbrace{","","","}_","{","","","}")},
+"@x":function(t){return x._.M(t,"\\color{","","","}")},
+"@y":function(t){return x._.M(t,"\\color{","","","}","{","","","}")},
+"@w":function(t){return x._.M(t,"\\color","\\","",/^(?=\{)/,"{","","","}")},
+"@v":function(t){return x._.M(t,"\\ce{","","","}")},"~W":/^(?:[+-][IVX]+|\\pm\s*0|\$\\pm\$\s*0)$/,"%Y":/^(?:[+-]?\s?[IVX]+|\\pm\s*0|\$\\pm\$\s*0)$/,"%a":/^[IVX]+/,"@k":/^[+\-]?(?:[0-9]+|\$[a-z]\$|[a-z])\/[0-9]+(?:\$[a-z]\$|[a-z])?$/,
+"~@":function(t){var n;if(n=t.match(/^(?:(?:(?:\([+\-]?[0-9]+\/[0-9]+\)|[+\-]?(?:[0-9]+|\$[a-z]\$|[a-z])\/[0-9]+|[+\-]?[0-9]+[.,][0-9]+|[+\-]?\.[0-9]+|[+\-]?[0-9]+)(?:[a-z](?=\s*[A-Z]))?)|[+\-]?[a-z](?=\s*[A-Z])|\+(?!\s))/))return{s:n[0],$:t.substr(n[0].length)};var e=x._.M(t,"","$","$","");return e&&(n=e.s.match(/^\$(?:\(?[+\-]?(?:[0-9]*[a-z]?[+\-])?[0-9]*[a-z](?:[+\-][0-9]*[a-z]?)?\)?|\+|-)\$$/))?{s:n[0],$:t.substr(n[0].length)}:null},
+"~~":function(t){return this["~@"](t)},"@c":/^(?:[A-Z][a-z]{0,2}|i)(?=,)/,
+"~B":function(t){if(t.match(/^\([a-z]+\)$/))return null;var n=t.match(/^(?:[a-z]|(?:[0-9\ \+\-\,\.\(\)]+[a-z])+[0-9\ \+\-\,\.\(\)]*|(?:[a-z][0-9\ \+\-\,\.\(\)]+)+[a-z]?)$/);return n?{s:n[0],$:t.substr(n[0].length)}:null},"%w":/^(?:pH|pOH|pC|pK|iPr|iBu)(?=$|[^a-zA-Z])/,"/":/^\s*(\/)\s*/,"//":/^\s*(\/\/)\s*/,"*":/^\s*[*.]\s*/},
+M:function(t,n,e,a,o,r,i,c,u,s){var p=function(t,n){if("string"==typeof n)return 0!==t.indexOf(n)?null:n;var e=t.match(n);return e?e[0]:null},_=p(t,n);if(null===_)return null;if(t=t.substr(_.length),null===(_=p(t,e)))return null;var f=function(t,n,e){for(var a=0;n<t.length;){var o=t.charAt(n),r=p(t.substr(n),e);if(null!==r&&0===a)return{P:n,T:n+r.length};if("{"===o)a++;else if("}"===o){if(0===a)throw["ExtraCloseMissingOpen","Extra close brace or missing open brace"];a--}n++}return null}(t,_.length,a||o);if(null===f)return null;var h=t.substring(0,a?f.T:f.P);if(r||i){var x=this.M(t.substr(f.T),r,i,c,u);if(null===x)return null;var m=[h,x.s];return{s:s?m.join(""):m,$:x.$}}return{s:h,$:t.substr(f.T)}},
+s:function(t,n){var e=x._._[t];if(void 0===e)throw["MhchemBugP","mhchem bug P. Please report. ("+t+")"];if("function"==typeof e)return x._._[t](n);var a=n.match(e);return a?{s:a[2]?[a[1],a[2]]:a[1]?a[1]:a[0],$:n.substr(a[0].length)}:null}},
+m:{
+"a=":function(t,n){t.a=(t.a||"")+n},
+"b=":function(t,n){t.b=(t.b||"")+n},
+"p=":function(t,n){t.p=(t.p||"")+n},
+"o=":function(t,n){t.o=(t.o||"")+n},
+"q=":function(t,n){t.q=(t.q||"")+n},
+"d=":function(t,n){t.d=(t.d||"")+n},
+"%`":function(t,n){t.rm=(t.rm||"")+n},
+"%q":function(t,n){t.F=(t.F||"")+n},
+"~G":function(t,n,e){return{l:e}},
+"~H":function(t,n,e){return{l:e,p1:n}},
+"~I":function(t,n,e){return{l:e,p1:n[0],p2:n[1]}},
+"~p":function(t,n){return n},
+rm:function(t,n){return{l:"rm",p1:n||""}},
+"%p":function(t,n){return x.go(n,"%p")},
+"%z":function(t,n){var e=["{"];return x.v(e,x.go(n,"%p")),e.push("}"),e},
+"%o":function(t,n){return x.go(n,"%o")},
+"%n":function(t,n){return x.go(n,"%n")},
+"~c":function(t,n,e){return{l:"~c",B:e||n}},
+"~j":function(t,n){return{l:"~i",color:n[0]}},
+ce:function(t,n){return x.go(n)},
+"@l":function(t,n){var e=[];n.match(/^[+\-]/)&&(e.push(n.substr(0,1)),n=n.substr(1));var a=n.match(/^([0-9]+|\$[a-z]\$|[a-z])\/([0-9]+)(\$[a-z]\$|[a-z])?$/);return a[1]=a[1].replace(/\$/g,""),e.push({l:"~C",p1:a[1],p2:a[2]}),a[3]&&(a[3]=a[3].replace(/\$/g,""),e.push({l:"%o",p1:a[3]})),e},
+"@m":function(t,n){return x.go(n,"@m")}},
+C:function(t){var n,e,a,o,r={};for(n in t)for(e in t[n])for(a=e.split("|"),t[n][e].stateArray=a,o=0;o<a.length;o++)r[a[o]]=[];for(n in t)for(e in t[n])for(a=t[n][e].stateArray||[],o=0;o<a.length;o++){var i=t[n][e];if(i.h){i.h=[].concat(i.h);for(var c=0;c<i.h.length;c++)"string"==typeof i.h[c]&&(i.h[c]={l:i.h[c]})}else i.h=[];for(var u=n.split("|"),s=0;s<u.length;s++)if("*"===a[o])for(var p in r)r[p].push({pattern:u[s],task:i});else r[a[o]].push({pattern:u[s],task:i})}return r},t:{}};x.t={ce:{u:x.C({"~z":{"*":{h:"~Q"}},
+"~x":{"0|1|2":{h:"~a",k:!0,A:!0}},
+"~W":{0:{h:"`@"}},
+"@n":{r:{h:"%%",g:"rt"},rd:{h:"%d",g:"%f"}},
+"~`":{"0|1|2|as":{h:["%g","~Q","~N"],g:"1"}},
+"%w":{"0|1|2":{h:["o=","~Q"],g:"1"}},
+"~O":{"0|1|2|3":{h:"o=",g:"o"}},
+"->":{"0|1|2|3":{h:"r=",g:"r"},"a|as":{h:["~Q","r="],g:"r"},"*":{h:["~Q","r="],g:"r"}},
+"+":{o:{h:"~q",g:"d"},"d|D":{h:"d=",g:"d"},q:{h:"d=",g:"qd"},"qd|qD":{h:"d=",g:"qd"},dq:{h:["~Q","d="],g:"d"},3:{h:["%g","~Q","~N"],g:"0"}},
+"~@":{"0|2":{h:"a=",g:"a"}},
+"``":{"0|1|2|a|as":{h:["%g","~Q",{l:"~N",S:"\\pm"}],g:"0"}},
+"~N":{"0|1|2|a|as":{h:["%g","~Q","~N"],g:"0"}},
+"-$":{"o|q":{h:["~d","~Q"],g:"qd"},d:{h:"d=",g:"d"},D:{h:["~Q",{l:"~c",S:"-"}],g:"3"},q:{h:"d=",g:"qd"},qd:{h:"d=",g:"qd"},"qD|dq":{h:["~Q",{l:"~c",S:"-"}],g:"3"}},
+"-9":{"3|o":{h:["~Q",{l:"~G",S:"~F"}],g:"3"}},
+"@g":{o:{h:["~Q",{l:"~G",S:"~F"}],g:"2"},d:{h:["~Q",{l:"~G",S:"~F"}],g:"2"}},
+"-":{"0|1|2":{h:[{l:"~Q",S:1},"~b",{l:"~c",S:"-"}],g:"3"},3:{h:{l:"~c",S:"-"}},
+a:{h:["~Q",{l:"~G",S:"~F"}],g:"2"},as:{h:[{l:"~Q",S:2},{l:"~c",S:"-"}],g:"3"},b:{h:"b="},o:{h:{l:"`d",S:!1},g:"2"},q:{h:{l:"`d",S:!1},g:"2"},"d|qd|dq":{h:{l:"`d",S:!0},g:"2"},"D|qD|p":{h:["~Q",{l:"~c",S:"-"}],g:"3"}},
+"~~":{"1|3":{h:"a=",g:"a"}},
+"~J":{"0|1|2|3|a|as|b|p|bp|o":{h:"o=",g:"o"},"q|dq":{h:["~Q","o="],g:"o"},"d|D|qd|qD":{h:"~K",g:"o"}},
+"~r":{o:{h:"q=",g:"q"},"d|D":{h:"q=",g:"dq"},q:{h:["~Q","o="],g:"o"},a:{h:"o=",g:"o"}},
+"%i":{"b|p|bp":{}},
+"%j":{a:{g:"as"},0:{h:"%g"},"1|2":{h:"%h"},"r|rt|rd|%f|%e":{h:"~Q",g:"0"},"*":{h:["~Q","%h"],g:"1"}},
+"`c":{"1|2":{h:["~Q",{l:"~H",S:"`c"}]},
+"*":{h:["~Q",{l:"~H",S:"`c"}],g:"0"}},
+"@p":{"r|rt":{h:"%~",g:"rd"},"rd|%f":{h:"%c",g:"%e"}},
+"@j":{"o|d|D|dq|qd|qD":{h:["~Q",{l:"~c",S:"..."}],g:"3"},"*":{h:[{l:"~Q",S:1},{l:"~G",S:"~w"}],g:"1"}},
+". |* ":{"*":{h:["~Q",{l:"~G",S:"@Y"}],g:"1"}},
+"%k":{"*":{h:["~Q","%m"],g:"1"}},
+"@L":{"a|as|o":{h:["o=","~Q","~X"],g:"2"},"0|1|2|3":{h:["o=","~Q","~X"],g:"2"},"*":{h:["~Q","o=","~Q","~X"],g:"2"}},
+"@d":{"0|1|2|3|b|p|bp|o":{h:["o=","~Y"],g:"o"},"a|as|d|D|q|qd|qD|dq":{h:["~Q","o=","~Y"],g:"o"}},
+", ":{"*":{h:["~Q","~n"],g:"0"}},
+"^_":{"*":{}},
+"@Q|@M":{"0|1|2|as":{h:"b=",g:"b"},p:{h:"b=",g:"bp"},"3|o":{h:"~q",g:"D"},q:{h:"d=",g:"qD"},"d|D|qd|qD|dq":{h:["~Q","d="],g:"D"}},
+"^a|@P|@O|^\\x|'":{"0|1|2|as":{h:"b=",g:"b"},p:{h:"b=",g:"bp"},"3|o":{h:"~q",g:"d"},q:{h:"d=",g:"qd"},"d|qd|D|qD":{h:"d="},dq:{h:["~Q","d="],g:"d"}},
+"`~":{"d|D|q|qd|qD|dq":{h:["~Q","q="],g:"q"}},
+"@V|@R|_9|@U|@T|@S":{"0|1|2|as":{h:"p=",g:"p"},b:{h:"p=",g:"bp"},"3|o":{h:"q=",g:"q"},"d|D":{h:"q=",g:"dq"},"q|qd|qD|dq":{h:["~Q","q="],g:"q"}},
+"%A":{"0|1|2|3|a|as|o|q|d|D|qd|qD|dq":{h:[{l:"~Q",S:2},"~c"],g:"3"}},
+"#":{"0|1|2|3|a|as|o":{h:[{l:"~Q",S:2},{l:"~c",S:"#"}],g:"3"}},
+"{}":{"*":{h:{l:"~Q",S:1},g:"1"}},
+"%y":{"0|1|2|3|a|as|b|p|bp":{h:"o=",g:"o"},"o|d|D|q|qd|qD|dq":{h:["~Q","o="],g:"o"}},
+"@`":{a:{h:"a="},"0|1|2|3|as|b|p|bp|o":{h:"o=",g:"o"},"as|o":{h:"o="},"q|d|D|qd|qD|dq":{h:["~Q","o="],g:"o"}},
+"@s":{"*":{h:[{l:"~Q",S:2},"~c"],g:"3"}},
+"@z":{"*":{h:[{l:"~Q",S:1},"~E"],g:"3"}},
+"@B":{"*":{h:[{l:"~Q",S:2},"~U"],g:"3"}},
+"@D":{"*":{h:[{l:"~Q",S:2},"%v"],g:"3"}},
+"@C":{"*":{h:[{l:"~Q",S:2},"%t"],g:"3"}},
+"@y|@w":{"*":{h:[{l:"~Q",S:2},"~h"],g:"3"}},
+"@x":{"*":{h:[{l:"~Q",S:2},"~j"]}},
+"@v":{"*":{h:[{l:"~Q",S:2},"ce"],g:"3"}},
+"@q":{"*":{h:[{l:"~Q",S:1},"~p"],g:"1"}},
+"@H|@G|@F":{"0|1|2|3|a|as|b|p|bp|o|c0":{h:["o=","~Q"],g:"3"},"*":{h:["~Q","o=","~Q"],g:"3"}},
+"~P":{"*":{h:[{l:"~Q",S:1},"~p"],g:"3"}},
+"~y":{a:{h:"@W",g:"o",k:!0},as:{h:["~Q","%h"],g:"1",k:!0},"r|rt|rd|%f|%e":{h:["~Q"],g:"0",k:!0},"*":{h:["~Q","~p"],g:"3"}}}),m:{
+"~K":function(t,n){var e;if((t.d||"").match(/^[0-9]+$/)){var a=t.d;t.d=void 0,e=this["~Q"](t),t.b=a}else e=this["~Q"](t);return x.m["o="](t,n),e},
+"~q":function(t,n){t.d=n,t.dType="kv"},
+"~d":function(t,n){if(t["@~"]){var e=[];return x.v(e,this["~Q"](t)),x.v(e,x.m["~c"](t,n,"-")),e}t.d=n},
+"`d":function(t,n,e){var a=x._.s("~O",t.o||""),o=x._.s("~L",t.o||""),r=x._.s("~M",t.o||""),i=x._.s("@a",t.o||""),c="-"===n&&(a&&""===a.$||o||r||i);!c||t.a||t.b||t.p||t.d||t.q||a||!r||(t.o="$"+t.o+"$");var u=[];return c?(x.v(u,this["~Q"](t)),u.push({l:"~F"})):(a=x._.s("~r",t.d||""),e&&a&&""===a.$?(x.v(u,x.m["d="](t,n)),x.v(u,this["~Q"](t))):(x.v(u,this["~Q"](t)),x.v(u,x.m["~c"](t,n,"-")))),u},
+"@W":function(t){t.o=t.a,t.a=void 0},
+"%h":function(t){t.sb=!0},
+"%g":function(t){t.sb=!1},
+"~b":function(t){t["@~"]=!0},
+"~a":function(t){t["@~"]=!1},
+"~X":function(t){t["@@"]++},
+"~Y":function(t){t["@@"]--},
+"%m":function(t,n){return{l:"%m",p1:x.go(n,"o")}},
+"~n":function(t,n){var e=n.replace(/\s*$/,"");return e!==n&&0===t["@@"]?{l:"~k",p1:e}:{l:"~l",p1:e}},
+"~Q":function(t,n,e){var a,o,r;t.r?(o="M"===t.rdt?x.go(t.rd,"%o"):"T"===t.rdt?[{l:"%p",p1:t.rd||""}]:x.go(t.rd),r="M"===t.rqt?x.go(t.rq,"%o"):"T"===t.rqt?[{l:"%p",p1:t.rq||""}]:x.go(t.rq),a={l:"~%",r:t.r,rd:o,rq:r}):(a=[],(t.a||t.b||t.p||t.o||t.q||t.d||e)&&(t.sb&&a.push({l:"~A"}),t.o||t.q||t.d||t.b||t.p||2===e?t.o||t.q||t.d||!t.b&&!t.p?t.o&&"kv"===t.dType&&x._.s("%Y",t.d||"")?t.dType="~V":t.o&&"kv"===t.dType&&!t.q&&(t.dType=void 0):(t.o=t.a,t.d=t.b,t.q=t.p,t.a=t.b=t.p=void 0):(t.o=t.a,t.a=void 0),a.push({l:"~e",a:x.go(t.a,"a"),b:x.go(t.b,"bd"),p:x.go(t.p,"pq"),o:x.go(t.o,"o"),q:x.go(t.q,"pq"),d:x.go(t.d,"~V"===t.dType?"~V":"bd"),dType:t.dType})));for(var i in t)"@@"!==i&&"@~"!==i&&delete t[i];return a},
+"`@":function(t,n){var e=["{"];return x.v(e,x.go(n,"~V")),e.push("}"),e},
+"~E":function(t,n){return{l:"~D",p1:x.go(n[0]),p2:x.go(n[1])}},
+"~U":function(t,n){return{l:"~T",p1:x.go(n[0]),p2:x.go(n[1])}},
+"%v":function(t,n){return{l:"%u",p1:x.go(n[0]),p2:x.go(n[1])}},
+"%t":function(t,n){return{l:"%s",p1:x.go(n[0]),p2:x.go(n[1])}},
+"~h":function(t,n){return{l:"~g",G:n[0],X:x.go(n[1])}},
+"r=":function(t,n){t.r=n},
+"%%":function(t,n){t.rdt=n},
+"%~":function(t,n){t.rd=n},
+"%d":function(t,n){t.rqt=n},
+"%c":function(t,n){t.rq=n},
+"~N":function(t,n,e){return{l:"~N",B:e||n}}}},
+a:{u:x.C({"~z":{"*":{}},
+"@k":{0:{h:"@l"}},
+"~x":{0:{g:"1",k:!0}},
+"@%":{"*":{h:"%n",g:"1"}},
+",":{"*":{h:{l:"~G",S:"~o"}}},
+"~y":{"*":{h:"~p"}}}),m:{}},
+o:{u:x.C({"~z":{"*":{}},
+"@k":{0:{h:"@l"}},
+"~x":{0:{g:"1",k:!0}},
+"~J":{"*":{h:"rm"}},
+"@u":{"*":{h:{l:"~G",S:"~f"}}},
+"@H|@G|@F":{"*":{h:"~p"}},
+"@b|@%":{"*":{h:"%o"}},
+"%x":{"*":{h:"%z"}},
+"~y":{"*":{h:"~p"}}}),m:{}},
+"%p":{u:x.C({"~z":{"*":{h:"~Q"}},
+"%y":{"*":{h:"%q"}},
+"@b|@%":{"*":{h:"%o"}},
+"@A":{"*":{h:["~Q","rm"]}},
+"@q|@H|@G|@F":{"*":{h:["~Q","~p"]}},
+"~x":{"*":{h:"%q"}}}),m:{
+"~Q":function(t){if(t.F){var n={l:"%p",p1:t.F};for(var e in t)delete t[e];return n}}}},
+pq:{u:x.C({"~z":{"*":{}},
+"%k":{"*":{h:"%m"}},
+i$:{0:{g:"!f",k:!0}},
+"@c":{0:{h:"rm",g:"0"}},
+"~B":{0:{g:"f",k:!0}},
+"@k":{0:{h:"@l"}},
+"~x":{0:{g:"!f",k:!0}},
+"@b|@%":{"*":{h:"%o"}},
+"%x":{"*":{h:"%p"}},
+"@X":{f:{h:"%o"}},
+"~J":{"*":{h:"rm"}},
+"@i":{"*":{h:"@m"}},
+",":{"*":{h:{l:"~H",S:"~m"}}},
+"@y|@w":{"*":{h:"~h"}},
+"@x":{"*":{h:"~j"}},
+"@v":{"*":{h:"ce"}},
+"@q|@H|@G|@F":{"*":{h:"~p"}},
+"~y":{"*":{h:"~p"}}}),m:{
+"%m":function(t,n){return{l:"%H",p1:x.go(n,"o")}},
+"~h":function(t,n){return{l:"~g",G:n[0],X:x.go(n[1],"pq")}}}},
+bd:{u:x.C({"~z":{"*":{}},
+x$:{0:{g:"!f",k:!0}},
+"~B":{0:{g:"f",k:!0}},
+"~x":{0:{g:"!f",k:!0}},
+"@h":{"*":{h:"@m"}},
+".":{"*":{h:{l:"~G",S:"~v"}}},
+"@X":{f:{h:"%o"}},
+x:{"*":{h:{l:"~G",S:"@o"}}},
+"~J":{"*":{h:"rm"}},
+"'":{"*":{h:{l:"~G",S:"%@"}}},
+"@b|@%":{"*":{h:"%o"}},
+"%x":{"*":{h:"%p"}},
+"@y|@w":{"*":{h:"~h"}},
+"@x":{"*":{h:"~j"}},
+"@v":{"*":{h:"ce"}},
+"@q|@H|@G|@F":{"*":{h:"~p"}},
+"~y":{"*":{h:"~p"}}}),m:{
+"~h":function(t,n){return{l:"~g",G:n[0],X:x.go(n[1],"bd")}}}},
+"~V":{u:x.C({"~z":{"*":{}},
+"%a":{"*":{h:"%b"}},
+"@b|@%":{"*":{h:"%o"}},
+"~x":{"*":{h:"~p"}}}),m:{
+"%b":function(t,n){return{l:"%a",p1:n||""}}}},
+"%o":{u:x.C({"~z":{"*":{h:"~Q"}},
+"@v":{"*":{h:["~Q","ce"]}},
+"%y|@q|@H|@G|@F":{"*":{h:"o="}},
+"~x":{"*":{h:"o="}}}),m:{
+"~Q":function(t){if(t.o){var n={l:"%o",p1:t.o};for(var e in t)delete t[e];return n}}}},
+"%n":{u:x.C({"~z":{"*":{h:"~Q"}},
+"@v":{"*":{h:["~Q","ce"]}},
+"%y|@q|@H|@G|@F":{"*":{h:"o="}},
+"-|+":{"*":{h:"%r"}},
+"~x":{"*":{h:"o="}}}),m:{
+"%r":function(t,n){t.o=(t.o||"")+"{"+n+"}"},
+"~Q":function(t){if(t.o){var n={l:"%o",p1:t.o};for(var e in t)delete t[e];return n}}}},
+"@m":{u:x.C({"~z":{"*":{}},
+",":{"*":{h:"~n"}},
+"~x":{"*":{h:"~p"}}}),m:{
+"~n":function(){return{l:"~o"}}}},
+pu:{u:x.C({"~z":{"*":{h:"~Q"}},
+"`e":{"*":{h:["~Q","%j"]}},
+"@L|@d":{"0|a":{h:"~p"}},
+"`a":{0:{h:"`b",g:"a"}},
+"%Q":{0:{h:"%W",g:"a"}},
+"%j":{"0|a":{}},
+"``":{"0|a":{h:{l:"~N",S:"\\pm"},g:"0"}},
+"~N":{"0|a":{h:"~p",g:"0"}},
+"//":{d:{h:"o=",g:"/"}},
+"/":{d:{h:"o=",g:"/"}},
+"%y|~x":{"0|d":{h:"d=",g:"d"},a:{h:["%j","d="],g:"d"},"/|q":{h:"q=",g:"q"}}}),m:{
+"%W":function(t,n){var e=[];return"+-"===n[0]||"+/-"===n[0]?e.push("\\pm "):n[0]&&e.push(n[0]),n[1]&&(x.v(e,x.go(n[1],"%U")),n[2]&&(n[2].match(/[,.]/)?x.v(e,x.go(n[2],"%U")):e.push(n[2])),(n[3]||n[4])&&("e"===n[3]||"*"===n[4]?e.push({l:"%K"}):e.push({l:"%M"}))),n[5]&&e.push("10^{"+n[5]+"}"),e},
+"`b":function(t,n){var e=[];return"+-"===n[0]||"+/-"===n[0]?e.push("\\pm "):n[0]&&e.push(n[0]),x.v(e,x.go(n[1],"%U")),e.push("^{"+n[2]+"}"),e},
+"~N":function(t,n,e){return{l:"~N",B:e||n}},
+"%j":function(){return{l:"%N"}},
+"~Q":function(t){var n,e=x._.s("%x",t.d||"");e&&""===e.$&&(t.d=e.s);var a=x._.s("%x",t.q||"");if(a&&""===a.$&&(t.q=a.s),t.d&&(t.d=t.d.replace(/\u00B0C|\^oC|\^{o}C/g,"{}^{\\circ}C"),t.d=t.d.replace(/\u00B0F|\^oF|\^{o}F/g,"{}^{\\circ}F")),t.q){t.q=t.q.replace(/\u00B0C|\^oC|\^{o}C/g,"{}^{\\circ}C"),t.q=t.q.replace(/\u00B0F|\^oF|\^{o}F/g,"{}^{\\circ}F");var o={d:x.go(t.d,"pu"),q:x.go(t.q,"pu")};"//"===t.o?n={l:"%P",p1:o.d,p2:o.q}:(1<(n=o.d).length||1<o.q.length?n.push({l:"%S"}):n.push({l:"/"}),x.v(n,o.q))}else n=x.go(t.d,"%O");for(var r in t)delete t[r];return n}}},
+"%O":{u:x.C({"~z":{"*":{h:"~Q"}},
+"*":{"*":{h:["~Q","%K"],g:"0"}},
+"@F":{"*":{h:"%`"}},
+"%j":{"*":{h:["~Q","%j"],g:"0"}},
+"@Q|%R":{1:{h:"%R"}},
+"@i":{0:{h:"%`",g:"0"},1:{h:"%R",g:"0"}},
+"%y|~x":{"*":{h:"%`",g:"1"}}}),m:{
+"%K":function(){return{l:"%L"}},
+"%R":function(t,n){t.rm+="^{"+n+"}"},
+"%j":function(){return{l:"`%"}},
+"~Q":function(t){var n=[];if(t.rm){var e=x._.s("%x",t.rm||"");n=e&&""===e.$?x.go(e.s,"pu"):{l:"rm",p1:t.rm}}for(var a in t)delete t[a];return n}}},
+"%U":{u:x.C({"~z":{0:{h:"~R"},o:{h:"~S"}},
+",":{0:{h:["~R","~n"],g:"o"}},
+".":{0:{h:["~R","~p"],g:"o"}},
+"~x":{"*":{h:"%q"}}}),m:{
+"~n":function(){return{l:"~o"}},
+"~R":function(t){var n=[];if(t.F=t.F||"",4<t.F.length){var e=t.F.length%3;0===e&&(e=3);for(var a=t.F.length-3;0<a;a-=3)n.push(t.F.substr(a,3)),n.push({l:"%T"});n.push(t.F.substr(0,e)),n.reverse()}else n.push(t.F);for(var o in t)delete t[o];return n},
+"~S":function(t){var n=[];if(t.F=t.F||"",4<t.F.length){for(var e=t.F.length-3,a=0;a<e;a+=3)n.push(t.F.substr(a,3)),n.push({l:"%T"});n.push(t.F.substr(a))}else n.push(t.F);for(var o in t)delete t[o];return n}}}};var u={
+go:function(t,n){if(!t)return"";for(var e="",a=!1,o=0;o<t.length;o++){var r=t[o];"string"==typeof r?e+=r:(e+=u.Z(r),"`c"===r.l&&(a=!0))}return n||a||!e||(e="{"+e+"}"),e},
+j:function(t){return t?u.go(t,!0):t},
+Z:function(t){var n;switch(t.l){case"~e":n="";var e={a:u.j(t.a),b:u.j(t.b),p:u.j(t.p),o:u.j(t.o),q:u.j(t.q),d:u.j(t.d)};e.a&&(e.a.match(/^[+\-]/)&&(e.a="{"+e.a+"}"),n+=e.a+"\\,"),(e.b||e.p)&&(n+="{\\vphantom{X}}",n+="^{\\hphantom{"+(e.b||"")+"}}_{\\hphantom{"+(e.p||"")+"}}",n+="{\\vphantom{X}}",n+="^{\\smash[t]{\\vphantom{2}}\\llap{"+(e.b||"")+"}}",n+="_{\\vphantom{2}\\llap{\\smash[t]{"+(e.p||"")+"}}}"),e.o&&(e.o.match(/^[+\-]/)&&(e.o="{"+e.o+"}"),n+=e.o),"kv"===t.dType?((e.d||e.q)&&(n+="{\\vphantom{X}}"),e.d&&(n+="^{"+e.d+"}"),e.q&&(n+="_{\\smash[t]{"+e.q+"}}")):"~V"===t.dType?(e.d&&(n+="{\\vphantom{X}}",n+="^{"+e.d+"}"),e.q&&(n+="{\\vphantom{X}}",n+="_{\\smash[t]{"+e.q+"}}")):(e.q&&(n+="{\\vphantom{X}}",n+="_{\\smash[t]{"+e.q+"}}"),e.d&&(n+="{\\vphantom{X}}",n+="^{"+e.d+"}"));break;case"rm":n="\\mathrm{"+t.p1+"}";break;case"%p":n=t.p1.match(/[\^_]/)?(t.p1=t.p1.replace(" ","~").replace("-","\\text{-}"),"\\mathrm{"+t.p1+"}"):"\\text{"+t.p1+"}";break;case"%a":n="\\mathrm{"+t.p1+"}";break;case"%m":n="\\mskip2mu "+u.j(t.p1);break;case"%H":n="\\mskip1mu "+u.j(t.p1);break;case"~c":if(!(n=u.R(t.B)))throw["MhchemErrorBond","mhchem Error. Unknown bond type ("+t.B+")"];break;case"~C":var a="\\frac{"+t.p1+"}{"+t.p2+"}";n="\\mathchoice{\\textstyle"+a+"}{"+a+"}{"+a+"}{"+a+"}";break;case"%P":var o="\\frac{"+u.j(t.p1)+"}{"+u.j(t.p2)+"}";n="\\mathchoice{\\textstyle"+o+"}{"+o+"}{"+o+"}{"+o+"}";break;case"%o":n=t.p1+" ";break;case"~D":n="\\frac{"+u.j(t.p1)+"}{"+u.j(t.p2)+"}";break;case"~T":n="\\overset{"+u.j(t.p1)+"}{"+u.j(t.p2)+"}";break;case"%u":n="\\underset{"+u.j(t.p1)+"}{"+u.j(t.p2)+"}";break;case"%s":n="\\underbrace{"+u.j(t.p1)+"}_{"+u.j(t.p2)+"}";break;case"~g":n="{\\color{"+t.G+"}{"+u.j(t.X)+"}}";break;case"~i":n="\\color{"+t.color+"}";break;case"~%":var r=u.j(t.rd),i=u.j(t.rq),c=u.H(t.r);n=c=r||i?"<=>"===t.r||"<=>>"===t.r||"<<=>"===t.r||"<--\x3e"===t.r?(c="\\long"+c,r&&(c="\\overset{"+r+"}{"+c+"}"),i&&(c="<--\x3e"===t.r?"\\underset{\\lower2mu{"+i+"}}{"+c+"}":"\\underset{\\lower6mu{"+i+"}}{"+c+"}")," {}\\mathrel{"+c+"}{} "):(i&&(c+="[{"+i+"}]")," {}\\mathrel{\\x"+(c+="{"+r+"}")+"}{} "):" {}\\mathrel{\\long"+c+"}{} ";break;case"~N":n=u.J(t.B);break;case"`c":n=t.p1+" ";break;case"%j":n=" ";break;case"~A":case"%N":n="~";break;case"`%":n="\\mkern3mu ";break;case"%T":n="\\mkern2mu ";break;case"~o":n="{,}";break;case"~k":n="{"+t.p1+"}\\mkern6mu ";break;case"~l":n="{"+t.p1+"}\\mkern3mu ";break;case"~m":n="{"+t.p1+"}\\mkern1mu ";break;case"~F":n="\\text{-}";break;case"@Y":n="\\,{\\cdot}\\,";break;case"~v":n="\\mkern1mu \\bullet\\mkern1mu ";break;case"@o":n="{\\times}";break;case"%@":n="\\prime ";break;case"%K":n="\\cdot ";break;case"%L":n="\\mkern1mu{\\cdot}\\mkern1mu ";break;case"%M":n="\\times ";break;case"~f":n="{\\sim}";break;case"^":n="uparrow";break;case"v":n="downarrow";break;case"~w":n="\\ldots ";break;case"/":n="/";break;case"%S":n="\\,/\\,";break;default:throw["MhchemBugT","mhchem bug T. Please report."]}return n},
+H:function(t){switch(t){case"->":case"\u2192":case"\u27f6":return"rightarrow";case"<-":return"leftarrow";case"<->":return"leftrightarrow";case"<--\x3e":return"leftrightarrows";case"<=>":case"\u21cc":return"rightleftharpoons";case"<=>>":return"Rightleftharpoons";case"<<=>":return"Leftrightharpoons";default:throw["MhchemBugT","mhchem bug T. Please report."]}},
+R:function(t){switch(t){case"-":case"1":return"{-}";case"=":case"2":return"{=}";case"#":case"3":return"{\\equiv}";case"~":return"{\\tripledash}";case"~-":return"{\\rlap{\\lower.1em{-}}\\raise.1em{\\tripledash}}";case"~=":case"~--":return"{\\rlap{\\lower.2em{-}}\\rlap{\\raise.2em{\\tripledash}}-}";case"-~-":return"{\\rlap{\\lower.2em{-}}\\rlap{\\raise.2em{-}}\\tripledash}";case"...":return"{{\\cdot}{\\cdot}{\\cdot}}";case"....":return"{{\\cdot}{\\cdot}{\\cdot}{\\cdot}}";case"->":return"{\\rightarrow}";case"<-":return"{\\leftarrow}";case"<":return"{<}";case">":return"{>}";default:throw["MhchemBugT","mhchem bug T. Please report."]}},
+J:function(t){switch(t){case"+":return" {}+{} ";case"-":return" {}-{} ";case"=":return" {}={} ";case"<":return" {}<{} ";case">":return" {}>{} ";case"<<":return" {}\\ll{} ";case">>":return" {}\\gg{} ";case"\\pm":return" {}\\pm{} ";case"\\approx":case"$\\approx$":return" {}\\approx{} ";case"v":case"(v)":return" \\downarrow{} ";case"^":case"(^)":return" \\uparrow{} ";default:throw["MhchemBugT","mhchem bug T. Please report."]}}};MathJax.Extension["TeX/mhchem"].CE=a,n.Definitions.Add({macros:{ce:"CE",pu:"PU",xleftrightarrow:["Extension","AMSmath"],xrightleftharpoons:["Extension","AMSmath"],xRightleftharpoons:["Extension","AMSmath"],xLeftrightharpoons:["Extension","AMSmath"],longrightleftharpoons:["Macro","\\stackrel{\\textstyle{-}\\!\\!{\\rightharpoonup}}{\\smash{{\\leftharpoondown}\\!\\!{-}}}"],longRightleftharpoons:["Macro","\\stackrel{\\textstyle{-}\\!\\!{\\rightharpoonup}}{\\smash{\\leftharpoondown}}"],longLeftrightharpoons:["Macro","\\stackrel{\\textstyle\\vphantom{{-}}{\\rightharpoonup}}{\\smash{{\\leftharpoondown}\\!\\!{-}}}"],longleftrightarrows:["Macro","\\raise-3mu{\\stackrel{\\longrightarrow}{\\raise2mu{\\smash{\\longleftarrow}}}}"],tripledash:["Macro","\\vphantom{-}\\raise2mu{\\kern2mu\\tiny\\text{-}\\kern1mu\\text{-}\\kern1mu\\text{-}\\kern2mu}"]}},
+null,!0),MathJax.Extension["TeX/AMSmath"]||n.Definitions.Add({macros:{xrightarrow:["Extension","AMSmath"],xleftarrow:["Extension","AMSmath"]}},
+null,!0),MathJax.Hub.Register.StartupHook("TeX AMSmath Ready",function(){n.Definitions.Add({macros:{xleftrightarrow:["xArrow",8596,6,6],xrightleftharpoons:["xArrow",8652,5,7],xRightleftharpoons:["xArrow",8652,5,7],xLeftrightharpoons:["xArrow",8652,5,7]}},
+null,!0)}),n.Parse.Augment({
+CE:function(t){var n=this.GetArgument(t),e=a(n).Parse();this.string=e+this.string.substr(this.i),this.i=0},
+PU:function(t){var n=this.GetArgument(t),e=a(n).Parse("pu");this.string=e+this.string.substr(this.i),this.i=0}}),MathJax.Hub.Startup.signal.Post("TeX mhchem Ready")}),MathJax.Ajax.loadComplete("[mhchem]/mhchem.js");
 
-//
-// Coding Style
-//   - use '' for identifiers that can by minified/uglified
-//   - use "" for strings that need to stay untouched
-
-
-MathJax.Extension["TeX/mhchem"] = {
-  version: "3.3.2"
-};
-
-MathJax.Hub.Register.StartupHook("TeX Jax Ready", function () {
-
-  var TEX = MathJax.InputJax.TeX;
-
-  //
-  //  This is the main class for handing the \ce and related commands.
-  //  Its main method is Parse() which takes the argument to \ce and
-  //  returns the corresponding TeX string.
-  //
-
-  var CE = MathJax.Object.Subclass({
-    string: "",   // the \ce string being parsed
-
-    //
-    //  Store the string when a CE object is created
-    //
-    Init: function (string) { this.string = string; },
-
-    //
-    //  This converts the CE string to a TeX string.
-    //
-    Parse: function (stateMachine) {
-      try {
-        return texify.go(mhchemParser.go(this.string, stateMachine));
-      } catch (ex) {
-        TEX.Error(ex);
-      }
-    }
-  });
-
-  //
-  // Core parser for mhchem syntax  (recursive)
-  //
-  /** @type {MhchemParser} */
-  var mhchemParser = {
-    //
-    // Parses mchem \ce syntax
-    //
-    // Call like
-    //   go("H2O");
-    //
-    go: function (input, stateMachine) {
-      if (!input) { return []; }
-      if (stateMachine === undefined) { stateMachine = 'ce'; }
-      var state = '0';
-
-      //
-      // String buffers for parsing:
-      //
-      // buffer.a == amount
-      // buffer.o == element
-      // buffer.b == left-side superscript
-      // buffer.p == left-side subscript
-      // buffer.q == right-side subscript
-      // buffer.d == right-side superscript
-      //
-      // buffer.r == arrow
-      // buffer.rdt == arrow, script above, type
-      // buffer.rd == arrow, script above, content
-      // buffer.rqt == arrow, script below, type
-      // buffer.rq == arrow, script below, content
-      //
-      // buffer.text_
-      // buffer.rm
-      // etc.
-      //
-      // buffer.parenthesisLevel == int, starting at 0
-      // buffer.sb == bool, space before
-      // buffer.beginsWithBond == bool
-      //
-      // These letters are also used as state names.
-      //
-      // Other states:
-      // 0 == begin of main part (arrow/operator unlikely)
-      // 1 == next entity
-      // 2 == next entity (arrow/operator unlikely)
-      // 3 == next atom
-      // c == macro
-      //
-      /** @type {Buffer} */
-      var buffer = {};
-      buffer['parenthesisLevel'] = 0;
-
-      input = input.replace(/\n/g, " ");
-      input = input.replace(/[\u2212\u2013\u2014\u2010]/g, "-");
-      input = input.replace(/[\u2026]/g, "...");
-
-      //
-      // Looks through mhchemParser.transitions, to execute a matching action
-      // (recursive)
-      //
-      var lastInput;
-      var watchdog = 10;
-      /** @type {ParserOutput[]} */
-      var output = [];
-      while (true) {
-        if (lastInput !== input) {
-          watchdog = 10;
-          lastInput = input;
-        } else {
-          watchdog--;
-        }
-        //
-        // Find actions in transition table
-        //
-        var machine = mhchemParser.stateMachines[stateMachine];
-        var t = machine.transitions[state] || machine.transitions['*'];
-        iterateTransitions:
-        for (var i=0; i<t.length; i++) {
-          var matches = mhchemParser.patterns.match_(t[i].pattern, input);
-          if (matches) {
-            //
-            // Execute actions
-            //
-            var task = t[i].task;
-            for (var iA=0; iA<task.action_.length; iA++) {
-              var o;
-              //
-              // Find and execute action
-              //
-              if (machine.actions[task.action_[iA].type_]) {
-                o = machine.actions[task.action_[iA].type_](buffer, matches.match_, task.action_[iA].option);
-              } else if (mhchemParser.actions[task.action_[iA].type_]) {
-                o = mhchemParser.actions[task.action_[iA].type_](buffer, matches.match_, task.action_[iA].option);
-              } else {
-                throw ["MhchemBugA", "mhchem bug A. Please report. (" + task.action_[iA].type_ + ")"];  // Trying to use non-existing action
-              }
-              //
-              // Add output
-              //
-              mhchemParser.concatArray(output, o);
-            }
-            //
-            // Set next state,
-            // Shorten input,
-            // Continue with next character
-            //   (= apply only one transition per position)
-            //
-            state = task.nextState || state;
-            if (input.length > 0) {
-              if (!task.revisit) {
-                input = matches.remainder;
-              }
-              if (!task.toContinue) {
-                break iterateTransitions;
-              }
-            } else {
-              return output;
-            }
-          }
-        }
-        //
-        // Prevent infinite loop
-        //
-        if (watchdog <= 0) {
-          throw ["MhchemBugU", "mhchem bug U. Please report."];  // Unexpected character
-        }
-      }
-    },
-    concatArray: function (a, b) {
-      if (b) {
-        if (Object.prototype.toString.call(b) === "[object Array]") {  // Array.isArray(b)
-          for (var iB=0; iB<b.length; iB++) {
-            a.push(b[iB]);
-          }
-        } else {
-          a.push(b);
-        }
-      }
-    },
-
-    patterns: {
-      //
-      // Matching patterns
-      // either regexps or function that return null or {match_:"a", remainder:"bc"}
-      //
-      patterns: {
-        // property names must not look like integers ("2") for correct property traversal order, later on
-        'empty': /^$/,
-        'else': /^./,
-        'else2': /^./,
-        'space': /^\s/,
-        'space A': /^\s(?=[A-Z\\$])/,
-        'space$': /^\s$/,
-        'a-z': /^[a-z]/,
-        'x': /^x/,
-        'x$': /^x$/,
-        'i$': /^i$/,
-        'letters': /^(?:[a-zA-Z\u03B1-\u03C9\u0391-\u03A9?@]|(?:\\(?:alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega)(?:\s+|\{\}|(?![a-zA-Z]))))+/,
-        '\\greek': /^\\(?:alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega)(?:\s+|\{\}|(?![a-zA-Z]))/,
-        'one lowercase latin letter $': /^(?:([a-z])(?:$|[^a-zA-Z]))$/,
-        '$one lowercase latin letter$ $': /^\$(?:([a-z])(?:$|[^a-zA-Z]))\$$/,
-        'one lowercase greek letter $': /^(?:\$?[\u03B1-\u03C9]\$?|\$?\\(?:alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega)\s*\$?)(?:\s+|\{\}|(?![a-zA-Z]))$/,
-        'digits': /^[0-9]+/,
-        '-9.,9': /^[+\-]?(?:[0-9]+(?:[,.][0-9]+)?|[0-9]*(?:\.[0-9]+))/,
-        '-9.,9 no missing 0': /^[+\-]?[0-9]+(?:[.,][0-9]+)?/,
-        '(-)(9.,9)(e)(99)': function (input) {
-          var m = input.match(/^(\+\-|\+\/\-|\+|\-|\\pm\s?)?([0-9]+(?:[,.][0-9]+)?|[0-9]*(?:\.[0-9]+))?(\((?:[0-9]+(?:[,.][0-9]+)?|[0-9]*(?:\.[0-9]+))\))?(?:(?:([eE])|\s*(\*|x|\\times|\u00D7)\s*10\^)([+\-]?[0-9]+|\{[+\-]?[0-9]+\}))?/);
-          if (m && m[0]) {
-            return { match_: m.slice(1), remainder: input.substr(m[0].length) };
-          }
-          return null;
-        },
-        '(-)(9)^(-9)': function (input) {
-          var m = input.match(/^(\+\-|\+\/\-|\+|\-|\\pm\s?)?([0-9]+(?:[,.][0-9]+)?|[0-9]*(?:\.[0-9]+)?)\^([+\-]?[0-9]+|\{[+\-]?[0-9]+\})/);
-          if (m && m[0]) {
-            return { match_: m.slice(1), remainder: input.substr(m[0].length) };
-          }
-          return null;
-        },
-        'state of aggregation $': function (input) {  // ... or crystal system
-          var a = mhchemParser.patterns.findObserveGroups(input, "", /^\([a-z]{1,3}(?=[\),])/, ")", "");  // (aq), (aq,$\infty$), (aq, sat)
-          if (a  &&  a.remainder.match(/^($|[\s,;\)\]\}])/)) { return a; }  //  AND end of 'phrase'
-          var m = input.match(/^(?:\((?:\\ca\s?)?\$[amothc]\$\))/);  // OR crystal system ($o$) (\ca$c$)
-          if (m) {
-            return { match_: m[0], remainder: input.substr(m[0].length) };
-          }
-          return null;
-        },
-        '_{(state of aggregation)}$': /^_\{(\([a-z]{1,3}\))\}/,
-        '{[(': /^(?:\\\{|\[|\()/,
-        ')]}': /^(?:\)|\]|\\\})/,
-        ', ': /^[,;]\s*/,
-        ',': /^[,;]/,
-        '.': /^[.]/,
-        '. ': /^([.\u22C5\u00B7\u2022])\s*/,
-        '...': /^\.\.\.(?=$|[^.])/,
-        '* ': /^([*])\s*/,
-        '^{(...)}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "^{", "", "", "}"); },
-        '^($...$)': function (input) { return mhchemParser.patterns.findObserveGroups(input, "^", "$", "$", ""); },
-        '^a': /^\^([0-9]+|[^\\_])/,
-        '^\\x{}{}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "^", /^\\[a-zA-Z]+\{/, "}", "", "", "{", "}", "", true); },
-        '^\\x{}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "^", /^\\[a-zA-Z]+\{/, "}", ""); },
-        '^\\x': /^\^(\\[a-zA-Z]+)\s*/,
-        '^(-1)': /^\^(-?\d+)/,
-        '\'': /^'/,
-        '_{(...)}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "_{", "", "", "}"); },
-        '_($...$)': function (input) { return mhchemParser.patterns.findObserveGroups(input, "_", "$", "$", ""); },
-        '_9': /^_([+\-]?[0-9]+|[^\\])/,
-        '_\\x{}{}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "_", /^\\[a-zA-Z]+\{/, "}", "", "", "{", "}", "", true); },
-        '_\\x{}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "_", /^\\[a-zA-Z]+\{/, "}", ""); },
-        '_\\x': /^_(\\[a-zA-Z]+)\s*/,
-        '^_': /^(?:\^(?=_)|\_(?=\^)|[\^_]$)/,
-        '{}': /^\{\}/,
-        '{...}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "", "{", "}", ""); },
-        '{(...)}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "{", "", "", "}"); },
-        '$...$': function (input) { return mhchemParser.patterns.findObserveGroups(input, "", "$", "$", ""); },
-        '${(...)}$': function (input) { return mhchemParser.patterns.findObserveGroups(input, "${", "", "", "}$"); },
-        '$(...)$': function (input) { return mhchemParser.patterns.findObserveGroups(input, "$", "", "", "$"); },
-        '=<>': /^[=<>]/,
-        '#': /^[#\u2261]/,
-        '+': /^\+/,
-        '-$': /^-(?=[\s_},;\]/]|$|\([a-z]+\))/,  // -space -, -; -] -/ -$ -state-of-aggregation
-        '-9': /^-(?=[0-9])/,
-        '- orbital overlap': /^-(?=(?:[spd]|sp)(?:$|[\s,;\)\]\}]))/,
-        '-': /^-/,
-        'pm-operator': /^(?:\\pm|\$\\pm\$|\+-|\+\/-)/,
-        'operator': /^(?:\+|(?:[\-=<>]|<<|>>|\\approx|\$\\approx\$)(?=\s|$|-?[0-9]))/,
-        'arrowUpDown': /^(?:v|\(v\)|\^|\(\^\))(?=$|[\s,;\)\]\}])/,
-        '\\bond{(...)}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "\\bond{", "", "", "}"); },
-        '->': /^(?:<->|<-->|->|<-|<=>>|<<=>|<=>|[\u2192\u27F6\u21CC])/,
-        'CMT': /^[CMT](?=\[)/,
-        '[(...)]': function (input) { return mhchemParser.patterns.findObserveGroups(input, "[", "", "", "]"); },
-        '1st-level escape': /^(&|\\\\|\\hline)\s*/,
-        '\\,': /^(?:\\[,\ ;:])/,  // \\x - but output no space before
-        '\\x{}{}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "", /^\\[a-zA-Z]+\{/, "}", "", "", "{", "}", "", true); },
-        '\\x{}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "", /^\\[a-zA-Z]+\{/, "}", ""); },
-        '\\ca': /^\\ca(?:\s+|(?![a-zA-Z]))/,
-        '\\x': /^(?:\\[a-zA-Z]+\s*|\\[_&{}%])/,
-        'orbital': /^(?:[0-9]{1,2}[spdfgh]|[0-9]{0,2}sp)(?=$|[^a-zA-Z])/,  // only those with numbers in front, because the others will be formatted correctly anyway
-        'others': /^[\/~|]/,
-        '\\frac{(...)}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "\\frac{", "", "", "}", "{", "", "", "}"); },
-        '\\overset{(...)}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "\\overset{", "", "", "}", "{", "", "", "}"); },
-        '\\underset{(...)}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "\\underset{", "", "", "}", "{", "", "", "}"); },
-        '\\underbrace{(...)}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "\\underbrace{", "", "", "}_", "{", "", "", "}"); },
-        '\\color{(...)}0': function (input) { return mhchemParser.patterns.findObserveGroups(input, "\\color{", "", "", "}"); },
-        '\\color{(...)}{(...)}1': function (input) { return mhchemParser.patterns.findObserveGroups(input, "\\color{", "", "", "}", "{", "", "", "}"); },
-        '\\color(...){(...)}2': function (input) { return mhchemParser.patterns.findObserveGroups(input, "\\color", "\\", "", /^(?=\{)/, "{", "", "", "}"); },
-        '\\ce{(...)}': function (input) { return mhchemParser.patterns.findObserveGroups(input, "\\ce{", "", "", "}"); },
-        'oxidation$': /^(?:[+-][IVX]+|\\pm\s*0|\$\\pm\$\s*0)$/,
-        'd-oxidation$': /^(?:[+-]?\s?[IVX]+|\\pm\s*0|\$\\pm\$\s*0)$/,  // 0 could be oxidation or charge
-        'roman numeral': /^[IVX]+/,
-        '1/2$': /^[+\-]?(?:[0-9]+|\$[a-z]\$|[a-z])\/[0-9]+(?:\$[a-z]\$|[a-z])?$/,
-        'amount': function (input) {
-          var match;
-          // e.g. 2, 0.5, 1/2, -2, n/2, +;  $a$ could be added later in parsing
-          match = input.match(/^(?:(?:(?:\([+\-]?[0-9]+\/[0-9]+\)|[+\-]?(?:[0-9]+|\$[a-z]\$|[a-z])\/[0-9]+|[+\-]?[0-9]+[.,][0-9]+|[+\-]?\.[0-9]+|[+\-]?[0-9]+)(?:[a-z](?=\s*[A-Z]))?)|[+\-]?[a-z](?=\s*[A-Z])|\+(?!\s))/);
-          if (match) {
-            return { match_: match[0], remainder: input.substr(match[0].length) };
-          }
-          var a = mhchemParser.patterns.findObserveGroups(input, "", "$", "$", "");
-          if (a) {  // e.g. $2n-1$, $-$
-            match = a.match_.match(/^\$(?:\(?[+\-]?(?:[0-9]*[a-z]?[+\-])?[0-9]*[a-z](?:[+\-][0-9]*[a-z]?)?\)?|\+|-)\$$/);
-            if (match) {
-              return { match_: match[0], remainder: input.substr(match[0].length) };
-            }
-          }
-          return null;
-        },
-        'amount2': function (input) { return this['amount'](input); },
-        '(KV letters),': /^(?:[A-Z][a-z]{0,2}|i)(?=,)/,
-        'formula$': function (input) {
-          if (input.match(/^\([a-z]+\)$/)) { return null; }  // state of aggregation = no formula
-          var match = input.match(/^(?:[a-z]|(?:[0-9\ \+\-\,\.\(\)]+[a-z])+[0-9\ \+\-\,\.\(\)]*|(?:[a-z][0-9\ \+\-\,\.\(\)]+)+[a-z]?)$/);
-          if (match) {
-            return { match_: match[0], remainder: input.substr(match[0].length) };
-          }
-          return null;
-        },
-        'uprightEntities': /^(?:pH|pOH|pC|pK|iPr|iBu)(?=$|[^a-zA-Z])/,
-        '/': /^\s*(\/)\s*/,
-        '//': /^\s*(\/\/)\s*/,
-        '*': /^\s*[*.]\s*/
-      },
-      findObserveGroups: function (input, begExcl, begIncl, endIncl, endExcl, beg2Excl, beg2Incl, end2Incl, end2Excl, combine) {
-        /** @type {{(input: string, pattern: string | RegExp): string | string[] | null;}} */
-        var _match = function (input, pattern) {
-          if (typeof pattern === "string") {
-            if (input.indexOf(pattern) !== 0) { return null; }
-            return pattern;
-          } else {
-            var match = input.match(pattern);
-            if (!match) { return null; }
-            return match[0];
-          }
-        };
-        /** @type {{(input: string, i: number, endChars: string | RegExp): {endMatchBegin: number, endMatchEnd: number} | null;}} */
-        var _findObserveGroups = function (input, i, endChars) {
-          var braces = 0;
-          while (i < input.length) {
-            var a = input.charAt(i);
-            var match = _match(input.substr(i), endChars);
-            if (match !== null  &&  braces === 0) {
-              return { endMatchBegin: i, endMatchEnd: i + match.length };
-            } else if (a === "{") {
-              braces++;
-            } else if (a === "}") {
-              if (braces === 0) {
-                throw ["ExtraCloseMissingOpen", "Extra close brace or missing open brace"];
-              } else {
-                braces--;
-              }
-            }
-            i++;
-          }
-          if (braces > 0) {
-            return null;
-          }
-          return null;
-        };
-        var match = _match(input, begExcl);
-        if (match === null) { return null; }
-        input = input.substr(match.length);
-        match = _match(input, begIncl);
-        if (match === null) { return null; }
-        var e = _findObserveGroups(input, match.length, endIncl || endExcl);
-        if (e === null) { return null; }
-        var match1 = input.substring(0, (endIncl ? e.endMatchEnd : e.endMatchBegin));
-        if (!(beg2Excl || beg2Incl)) {
-          return {
-            match_: match1,
-            remainder: input.substr(e.endMatchEnd)
-          };
-        } else {
-          var group2 = this.findObserveGroups(input.substr(e.endMatchEnd), beg2Excl, beg2Incl, end2Incl, end2Excl);
-          if (group2 === null) { return null; }
-          /** @type {string[]} */
-          var matchRet = [match1, group2.match_];
-          return {
-            match_: (combine ? matchRet.join("") : matchRet),
-            remainder: group2.remainder
-          };
-        }
-      },
-
-      //
-      // Matching function
-      // e.g. match("a", input) will look for the regexp called "a" and see if it matches
-      // returns null or {match_:"a", remainder:"bc"}
-      //
-      match_: function (m, input) {
-        var pattern = mhchemParser.patterns.patterns[m];
-        if (pattern === undefined) {
-          throw ["MhchemBugP", "mhchem bug P. Please report. (" + m + ")"];  // Trying to use non-existing pattern
-        } else if (typeof pattern === "function") {
-          return mhchemParser.patterns.patterns[m](input);  // cannot use cached var pattern here, because some pattern functions need this===mhchemParser
-        } else {  // RegExp
-          var match = input.match(pattern);
-          if (match) {
-            var mm;
-            if (match[2]) {
-              mm = [ match[1], match[2] ];
-            } else if (match[1]) {
-              mm = match[1];
-            } else {
-              mm = match[0];
-            }
-            return { match_: mm, remainder: input.substr(match[0].length) };
-          }
-          return null;
-        }
-      }
-    },
-
-    //
-    // Generic state machine actions
-    //
-    actions: {
-      'a=': function (buffer, m) { buffer.a = (buffer.a || "") + m; },
-      'b=': function (buffer, m) { buffer.b = (buffer.b || "") + m; },
-      'p=': function (buffer, m) { buffer.p = (buffer.p || "") + m; },
-      'o=': function (buffer, m) { buffer.o = (buffer.o || "") + m; },
-      'q=': function (buffer, m) { buffer.q = (buffer.q || "") + m; },
-      'd=': function (buffer, m) { buffer.d = (buffer.d || "") + m; },
-      'rm=': function (buffer, m) { buffer.rm = (buffer.rm || "") + m; },
-      'text=': function (buffer, m) { buffer.text_ = (buffer.text_ || "") + m; },
-      'insert': function (buffer, m, a) { return { type_: a }; },
-      'insert+p1': function (buffer, m, a) { return { type_: a, p1: m }; },
-      'insert+p1+p2': function (buffer, m, a) { return { type_: a, p1: m[0], p2: m[1] }; },
-      'copy': function (buffer, m) { return m; },
-      'rm': function (buffer, m) { return { type_: 'rm', p1: m || ""}; },
-      'text': function (buffer, m) { return mhchemParser.go(m, 'text'); },
-      '{text}': function (buffer, m) {
-        var ret = [ "{" ];
-        mhchemParser.concatArray(ret, mhchemParser.go(m, 'text'));
-        ret.push("}");
-        return ret;
-      },
-      'tex-math': function (buffer, m) { return mhchemParser.go(m, 'tex-math'); },
-      'tex-math tight': function (buffer, m) { return mhchemParser.go(m, 'tex-math tight'); },
-      'bond': function (buffer, m, k) { return { type_: 'bond', kind_: k || m }; },
-      'color0-output': function (buffer, m) { return { type_: 'color0', color: m[0] }; },
-      'ce': function (buffer, m) { return mhchemParser.go(m); },
-      '1/2': function (buffer, m) {
-        /** @type {ParserOutput[]} */
-        var ret = [];
-        if (m.match(/^[+\-]/)) {
-          ret.push(m.substr(0, 1));
-          m = m.substr(1);
-        }
-        var n = m.match(/^([0-9]+|\$[a-z]\$|[a-z])\/([0-9]+)(\$[a-z]\$|[a-z])?$/);
-        n[1] = n[1].replace(/\$/g, "");
-        ret.push({ type_: 'frac', p1: n[1], p2: n[2] });
-        if (n[3]) {
-          n[3] = n[3].replace(/\$/g, "");
-          ret.push({ type_: 'tex-math', p1: n[3] });
-        }
-        return ret;
-      },
-      '9,9': function (buffer, m) { return mhchemParser.go(m, '9,9'); }
-    },
-    //
-    // createTransitions
-    // convert  { 'letter': { 'state': { action_: 'output' } } }  to  { 'state' => [ { pattern: 'letter', task: { action_: [{type_: 'output'}] } } ] }
-    // with expansion of 'a|b' to 'a' and 'b' (at 2 places)
-    //
-    createTransitions: function (o) {
-      var pattern, state;
-      /** @type {string[]} */
-      var stateArray;
-      var i;
-      //
-      // 1. Collect all states
-      //
-      /** @type {Transitions} */
-      var transitions = {};
-      for (pattern in o) {
-        for (state in o[pattern]) {
-          stateArray = state.split("|");
-          o[pattern][state].stateArray = stateArray;
-          for (i=0; i<stateArray.length; i++) {
-            transitions[stateArray[i]] = [];
-          }
-        }
-      }
-      //
-      // 2. Fill states
-      //
-      for (pattern in o) {
-        for (state in o[pattern]) {
-          stateArray = o[pattern][state].stateArray || [];
-          for (i=0; i<stateArray.length; i++) {
-            //
-            // 2a. Normalize actions into array:  'text=' ==> [{type_:'text='}]
-            // (Note to myself: Resolving the function here would be problematic. It would need .bind (for *this*) and currying (for *option*).)
-            //
-            /** @type {any} */
-            var p = o[pattern][state];
-            if (p.action_) {
-              p.action_ = [].concat(p.action_);
-              for (var k=0; k<p.action_.length; k++) {
-                if (typeof p.action_[k] === "string") {
-                  p.action_[k] = { type_: p.action_[k] };
-                }
-              }
-            } else {
-              p.action_ = [];
-            }
-            //
-            // 2.b Multi-insert
-            //
-            var patternArray = pattern.split("|");
-            for (var j=0; j<patternArray.length; j++) {
-              if (stateArray[i] === '*') {  // insert into all
-                for (var t in transitions) {
-                  transitions[t].push({ pattern: patternArray[j], task: p });
-                }
-              } else {
-                transitions[stateArray[i]].push({ pattern: patternArray[j], task: p });
-              }
-            }
-          }
-        }
-      }
-      return transitions;
-    },
-    stateMachines: {}
-  };
-
-  //
-  // Definition of state machines
-  //
-  mhchemParser.stateMachines = {
-    //
-    // \ce state machines
-    //
-    //#region ce
-    'ce': {  // main parser
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': { action_: 'output' } },
-        'else':  {
-          '0|1|2': { action_: 'beginsWithBond=false', revisit: true, toContinue: true } },
-        'oxidation$': {
-          '0': { action_: 'oxidation-output' } },
-        'CMT': {
-          'r': { action_: 'rdt=', nextState: 'rt' },
-          'rd': { action_: 'rqt=', nextState: 'rdt' } },
-        'arrowUpDown': {
-          '0|1|2|as': { action_: [ 'sb=false', 'output', 'operator' ], nextState: '1' } },
-        'uprightEntities': {
-          '0|1|2': { action_: [ 'o=', 'output' ], nextState: '1' } },
-        'orbital': {
-          '0|1|2|3': { action_: 'o=', nextState: 'o' } },
-        '->': {
-          '0|1|2|3': { action_: 'r=', nextState: 'r' },
-          'a|as': { action_: [ 'output', 'r=' ], nextState: 'r' },
-          '*': { action_: [ 'output', 'r=' ], nextState: 'r' } },
-        '+': {
-          'o': { action_: 'd= kv',  nextState: 'd' },
-          'd|D': { action_: 'd=', nextState: 'd' },
-          'q': { action_: 'd=',  nextState: 'qd' },
-          'qd|qD': { action_: 'd=', nextState: 'qd' },
-          'dq': { action_: [ 'output', 'd=' ], nextState: 'd' },
-          '3': { action_: [ 'sb=false', 'output', 'operator' ], nextState: '0' } },
-        'amount': {
-          '0|2': { action_: 'a=', nextState: 'a' } },
-        'pm-operator': {
-          '0|1|2|a|as': { action_: [ 'sb=false', 'output', { type_: 'operator', option: '\\pm' } ], nextState: '0' } },
-        'operator': {
-          '0|1|2|a|as': { action_: [ 'sb=false', 'output', 'operator' ], nextState: '0' } },
-        '-$': {
-          'o|q': { action_: [ 'charge or bond', 'output' ],  nextState: 'qd' },
-          'd': { action_: 'd=', nextState: 'd' },
-          'D': { action_: [ 'output', { type_: 'bond', option: "-" } ], nextState: '3' },
-          'q': { action_: 'd=',  nextState: 'qd' },
-          'qd': { action_: 'd=', nextState: 'qd' },
-          'qD|dq': { action_: [ 'output', { type_: 'bond', option: "-" } ], nextState: '3' } },
-        '-9': {
-          '3|o': { action_: [ 'output', { type_: 'insert', option: 'hyphen' } ], nextState: '3' } },
-        '- orbital overlap': {
-          'o': { action_: [ 'output', { type_: 'insert', option: 'hyphen' } ], nextState: '2' },
-          'd': { action_: [ 'output', { type_: 'insert', option: 'hyphen' } ], nextState: '2' } },
-        '-': {
-          '0|1|2': { action_: [ { type_: 'output', option: 1 }, 'beginsWithBond=true', { type_: 'bond', option: "-" } ], nextState: '3' },
-          '3': { action_: { type_: 'bond', option: "-" } },
-          'a': { action_: [ 'output', { type_: 'insert', option: 'hyphen' } ], nextState: '2' },
-          'as': { action_: [ { type_: 'output', option: 2 }, { type_: 'bond', option: "-" } ], nextState: '3' },
-          'b': { action_: 'b=' },
-          'o': { action_: { type_: '- after o/d', option: false }, nextState: '2' },
-          'q': { action_: { type_: '- after o/d', option: false }, nextState: '2' },
-          'd|qd|dq': { action_: { type_: '- after o/d', option: true }, nextState: '2' },
-          'D|qD|p': { action_: [ 'output', { type_: 'bond', option: "-" } ], nextState: '3' } },
-        'amount2': {
-          '1|3': { action_: 'a=', nextState: 'a' } },
-        'letters': {
-          '0|1|2|3|a|as|b|p|bp|o': { action_: 'o=', nextState: 'o' },
-          'q|dq': { action_: ['output', 'o='], nextState: 'o' },
-          'd|D|qd|qD': { action_: 'o after d', nextState: 'o' } },
-        'digits': {
-          'o': { action_: 'q=', nextState: 'q' },
-          'd|D': { action_: 'q=', nextState: 'dq' },
-          'q': { action_: [ 'output', 'o=' ], nextState: 'o' },
-          'a': { action_: 'o=', nextState: 'o' } },
-        'space A': {
-          'b|p|bp': {} },
-        'space': {
-          'a': { nextState: 'as' },
-          '0': { action_: 'sb=false' },
-          '1|2': { action_: 'sb=true' },
-          'r|rt|rd|rdt|rdq': { action_: 'output', nextState: '0' },
-          '*': { action_: [ 'output', 'sb=true' ], nextState: '1'} },
-        '1st-level escape': {
-          '1|2': { action_: [ 'output', { type_: 'insert+p1', option: '1st-level escape' } ] },
-          '*': { action_: [ 'output', { type_: 'insert+p1', option: '1st-level escape' } ], nextState: '0' } },
-        '[(...)]': {
-          'r|rt': { action_: 'rd=', nextState: 'rd' },
-          'rd|rdt': { action_: 'rq=', nextState: 'rdq' } },
-        '...': {
-          'o|d|D|dq|qd|qD': { action_: [ 'output', { type_: 'bond', option: "..." } ], nextState: '3' },
-          '*': { action_: [ { type_: 'output', option: 1 }, { type_: 'insert', option: 'ellipsis' } ], nextState: '1' } },
-        '. |* ': {
-          '*': { action_: [ 'output', { type_: 'insert', option: 'addition compound' } ], nextState: '1' } },
-        'state of aggregation $': {
-          '*': { action_: [ 'output', 'state of aggregation' ], nextState: '1' } },
-        '{[(': {
-          'a|as|o': { action_: [ 'o=', 'output', 'parenthesisLevel++' ], nextState: '2' },
-          '0|1|2|3': { action_: [ 'o=', 'output', 'parenthesisLevel++' ], nextState: '2' },
-          '*': { action_: [ 'output', 'o=', 'output', 'parenthesisLevel++' ], nextState: '2' } },
-        ')]}': {
-          '0|1|2|3|b|p|bp|o': { action_: [ 'o=', 'parenthesisLevel--' ], nextState: 'o' },
-          'a|as|d|D|q|qd|qD|dq': { action_: [ 'output', 'o=', 'parenthesisLevel--' ], nextState: 'o' } },
-        ', ': {
-          '*': { action_: [ 'output', 'comma' ], nextState: '0' } },
-        '^_': {  // ^ and _ without a sensible argument
-          '*': { } },
-        '^{(...)}|^($...$)': {
-          '0|1|2|as': { action_: 'b=', nextState: 'b' },
-          'p': { action_: 'b=', nextState: 'bp' },
-          '3|o': { action_: 'd= kv', nextState: 'D' },
-          'q': { action_: 'd=', nextState: 'qD' },
-          'd|D|qd|qD|dq': { action_: [ 'output', 'd=' ], nextState: 'D' } },
-        '^a|^\\x{}{}|^\\x{}|^\\x|\'': {
-          '0|1|2|as': { action_: 'b=', nextState: 'b' },
-          'p': { action_: 'b=', nextState: 'bp' },
-          '3|o': { action_: 'd= kv', nextState: 'd' },
-          'q': { action_: 'd=', nextState: 'qd' },
-          'd|qd|D|qD': { action_: 'd=' },
-          'dq': { action_: [ 'output', 'd=' ], nextState: 'd' } },
-        '_{(state of aggregation)}$': {
-          'd|D|q|qd|qD|dq': { action_: [ 'output', 'q=' ], nextState: 'q' } },
-        '_{(...)}|_($...$)|_9|_\\x{}{}|_\\x{}|_\\x': {
-          '0|1|2|as': { action_: 'p=', nextState: 'p' },
-          'b': { action_: 'p=', nextState: 'bp' },
-          '3|o': { action_: 'q=', nextState: 'q' },
-          'd|D': { action_: 'q=', nextState: 'dq' },
-          'q|qd|qD|dq': { action_: [ 'output', 'q=' ], nextState: 'q' } },
-        '=<>': {
-          '0|1|2|3|a|as|o|q|d|D|qd|qD|dq': { action_: [ { type_: 'output', option: 2 }, 'bond' ], nextState: '3' } },
-        '#': {
-          '0|1|2|3|a|as|o': { action_: [ { type_: 'output', option: 2 }, { type_: 'bond', option: "#" } ], nextState: '3' } },
-        '{}': {
-          '*': { action_: { type_: 'output', option: 1 },  nextState: '1' } },
-        '{...}': {
-          '0|1|2|3|a|as|b|p|bp': { action_: 'o=', nextState: 'o' },
-          'o|d|D|q|qd|qD|dq': { action_: [ 'output', 'o=' ], nextState: 'o' } },
-        '$...$': {
-          'a': { action_: 'a=' },  // 2$n$
-          '0|1|2|3|as|b|p|bp|o': { action_: 'o=', nextState: 'o' },  // not 'amount'
-          'as|o': { action_: 'o=' },
-          'q|d|D|qd|qD|dq': { action_: [ 'output', 'o=' ], nextState: 'o' } },
-        '\\bond{(...)}': {
-          '*': { action_: [ { type_: 'output', option: 2 }, 'bond' ], nextState: "3" } },
-        '\\frac{(...)}': {
-          '*': { action_: [ { type_: 'output', option: 1 }, 'frac-output' ], nextState: '3' } },
-        '\\overset{(...)}': {
-          '*': { action_: [ { type_: 'output', option: 2 }, 'overset-output' ], nextState: '3' } },
-        '\\underset{(...)}': {
-          '*': { action_: [ { type_: 'output', option: 2 }, 'underset-output' ], nextState: '3' } },
-        '\\underbrace{(...)}': {
-          '*': { action_: [ { type_: 'output', option: 2 }, 'underbrace-output' ], nextState: '3' } },
-        '\\color{(...)}{(...)}1|\\color(...){(...)}2': {
-          '*': { action_: [ { type_: 'output', option: 2 }, 'color-output' ], nextState: '3' } },
-        '\\color{(...)}0': {
-          '*': { action_: [ { type_: 'output', option: 2 }, 'color0-output' ] } },
-        '\\ce{(...)}': {
-          '*': { action_: [ { type_: 'output', option: 2 }, 'ce' ], nextState: '3' } },
-        '\\,': {
-          '*': { action_: [ { type_: 'output', option: 1 }, 'copy' ], nextState: '1' } },
-        '\\x{}{}|\\x{}|\\x': {
-          '0|1|2|3|a|as|b|p|bp|o|c0': { action_: [ 'o=', 'output' ], nextState: '3' },
-          '*': { action_: ['output', 'o=', 'output' ], nextState: '3' } },
-        'others': {
-          '*': { action_: [ { type_: 'output', option: 1 }, 'copy' ], nextState: '3' } },
-        'else2': {
-          'a': { action_: 'a to o', nextState: 'o', revisit: true },
-          'as': { action_: [ 'output', 'sb=true' ], nextState: '1', revisit: true },
-          'r|rt|rd|rdt|rdq': { action_: [ 'output' ], nextState: '0', revisit: true },
-          '*': { action_: [ 'output', 'copy' ], nextState: '3' } }
-      }),
-      actions: {
-        'o after d': function (buffer, m) {
-          var ret;
-          if ((buffer.d || "").match(/^[0-9]+$/)) {
-            var tmp = buffer.d;
-            buffer.d = undefined;
-            ret = this['output'](buffer);
-            buffer.b = tmp;
-          } else {
-            ret = this['output'](buffer);
-          }
-          mhchemParser.actions['o='](buffer, m);
-          return ret;
-        },
-        'd= kv': function (buffer, m) {
-          buffer.d = m;
-          buffer.dType = 'kv';
-        },
-        'charge or bond': function (buffer, m) {
-          if (buffer['beginsWithBond']) {
-            /** @type {ParserOutput[]} */
-            var ret = [];
-            mhchemParser.concatArray(ret, this['output'](buffer));
-            mhchemParser.concatArray(ret, mhchemParser.actions['bond'](buffer, m, "-"));
-            return ret;
-          } else {
-            buffer.d = m;
-          }
-        },
-        '- after o/d': function (buffer, m, isAfterD) {
-          var c1 = mhchemParser.patterns.match_('orbital', buffer.o || "");
-          var c2 = mhchemParser.patterns.match_('one lowercase greek letter $', buffer.o || "");
-          var c3 = mhchemParser.patterns.match_('one lowercase latin letter $', buffer.o || "");
-          var c4 = mhchemParser.patterns.match_('$one lowercase latin letter$ $', buffer.o || "");
-          var hyphenFollows =  m==="-" && ( c1 && c1.remainder===""  ||  c2  ||  c3  ||  c4 );
-          if (hyphenFollows && !buffer.a && !buffer.b && !buffer.p && !buffer.d && !buffer.q && !c1 && c3) {
-            buffer.o = '$' + buffer.o + '$';
-          }
-          /** @type {ParserOutput[]} */
-          var ret = [];
-          if (hyphenFollows) {
-            mhchemParser.concatArray(ret, this['output'](buffer));
-            ret.push({ type_: 'hyphen' });
-          } else {
-            c1 = mhchemParser.patterns.match_('digits', buffer.d || "");
-            if (isAfterD && c1 && c1.remainder==='') {
-              mhchemParser.concatArray(ret, mhchemParser.actions['d='](buffer, m));
-              mhchemParser.concatArray(ret, this['output'](buffer));
-            } else {
-              mhchemParser.concatArray(ret, this['output'](buffer));
-              mhchemParser.concatArray(ret, mhchemParser.actions['bond'](buffer, m, "-"));
-            }
-          }
-          return ret;
-        },
-        'a to o': function (buffer) {
-          buffer.o = buffer.a;
-          buffer.a = undefined;
-        },
-        'sb=true': function (buffer) { buffer.sb = true; },
-        'sb=false': function (buffer) { buffer.sb = false; },
-        'beginsWithBond=true': function (buffer) { buffer['beginsWithBond'] = true; },
-        'beginsWithBond=false': function (buffer) { buffer['beginsWithBond'] = false; },
-        'parenthesisLevel++': function (buffer) { buffer['parenthesisLevel']++; },
-        'parenthesisLevel--': function (buffer) { buffer['parenthesisLevel']--; },
-        'state of aggregation': function (buffer, m) {
-          return { type_: 'state of aggregation', p1: mhchemParser.go(m, 'o') };
-        },
-        'comma': function (buffer, m) {
-          var a = m.replace(/\s*$/, '');
-          var withSpace = (a !== m);
-          if (withSpace  &&  buffer['parenthesisLevel'] === 0) {
-            return { type_: 'comma enumeration L', p1: a };
-          } else {
-            return { type_: 'comma enumeration M', p1: a };
-          }
-        },
-        'output': function (buffer, m, entityFollows) {
-          // entityFollows:
-          //   undefined = if we have nothing else to output, also ignore the just read space (buffer.sb)
-          //   1 = an entity follows, never omit the space if there was one just read before (can only apply to state 1)
-          //   2 = 1 + the entity can have an amount, so output a\, instead of converting it to o (can only apply to states a|as)
-          /** @type {ParserOutput | ParserOutput[]} */
-          var ret;
-          if (!buffer.r) {
-            ret = [];
-            if (!buffer.a && !buffer.b && !buffer.p && !buffer.o && !buffer.q && !buffer.d && !entityFollows) {
-              //ret = [];
-            } else {
-              if (buffer.sb) {
-                ret.push({ type_: 'entitySkip' });
-              }
-              if (!buffer.o && !buffer.q && !buffer.d && !buffer.b && !buffer.p && entityFollows!==2) {
-                buffer.o = buffer.a;
-                buffer.a = undefined;
-              } else if (!buffer.o && !buffer.q && !buffer.d && (buffer.b || buffer.p)) {
-                buffer.o = buffer.a;
-                buffer.d = buffer.b;
-                buffer.q = buffer.p;
-                buffer.a = buffer.b = buffer.p = undefined;
-              } else {
-                if (buffer.o && buffer.dType==='kv' && mhchemParser.patterns.match_('d-oxidation$', buffer.d || "")) {
-                  buffer.dType = 'oxidation';
-                } else if (buffer.o && buffer.dType==='kv' && !buffer.q) {
-                  buffer.dType = undefined;
-                }
-              }
-              ret.push({
-                type_: 'chemfive',
-                a: mhchemParser.go(buffer.a, 'a'),
-                b: mhchemParser.go(buffer.b, 'bd'),
-                p: mhchemParser.go(buffer.p, 'pq'),
-                o: mhchemParser.go(buffer.o, 'o'),
-                q: mhchemParser.go(buffer.q, 'pq'),
-                d: mhchemParser.go(buffer.d, (buffer.dType === 'oxidation' ? 'oxidation' : 'bd')),
-                dType: buffer.dType
-              });
-            }
-          } else {  // r
-            /** @type {ParserOutput[]} */
-            var rd;
-            if (buffer.rdt === 'M') {
-              rd = mhchemParser.go(buffer.rd, 'tex-math');
-            } else if (buffer.rdt === 'T') {
-              rd = [ { type_: 'text', p1: buffer.rd || "" } ];
-            } else {
-              rd = mhchemParser.go(buffer.rd);
-            }
-            /** @type {ParserOutput[]} */
-            var rq;
-            if (buffer.rqt === 'M') {
-              rq = mhchemParser.go(buffer.rq, 'tex-math');
-            } else if (buffer.rqt === 'T') {
-              rq = [ { type_: 'text', p1: buffer.rq || ""} ];
-            } else {
-              rq = mhchemParser.go(buffer.rq);
-            }
-            ret = {
-              type_: 'arrow',
-              r: buffer.r,
-              rd: rd,
-              rq: rq
-            };
-          }
-          for (var p in buffer) {
-            if (p !== 'parenthesisLevel'  &&  p !== 'beginsWithBond') {
-              delete buffer[p];
-            }
-          }
-          return ret;
-        },
-        'oxidation-output': function (buffer, m) {
-          var ret = [ "{" ];
-          mhchemParser.concatArray(ret, mhchemParser.go(m, 'oxidation'));
-          ret.push("}");
-          return ret;
-        },
-        'frac-output': function (buffer, m) {
-          return { type_: 'frac-ce', p1: mhchemParser.go(m[0]), p2: mhchemParser.go(m[1]) };
-        },
-        'overset-output': function (buffer, m) {
-          return { type_: 'overset', p1: mhchemParser.go(m[0]), p2: mhchemParser.go(m[1]) };
-        },
-        'underset-output': function (buffer, m) {
-          return { type_: 'underset', p1: mhchemParser.go(m[0]), p2: mhchemParser.go(m[1]) };
-        },
-        'underbrace-output': function (buffer, m) {
-          return { type_: 'underbrace', p1: mhchemParser.go(m[0]), p2: mhchemParser.go(m[1]) };
-        },
-        'color-output': function (buffer, m) {
-          return { type_: 'color', color1: m[0], color2: mhchemParser.go(m[1]) };
-        },
-        'r=': function (buffer, m) { buffer.r = m; },
-        'rdt=': function (buffer, m) { buffer.rdt = m; },
-        'rd=': function (buffer, m) { buffer.rd = m; },
-        'rqt=': function (buffer, m) { buffer.rqt = m; },
-        'rq=': function (buffer, m) { buffer.rq = m; },
-        'operator': function (buffer, m, p1) { return { type_: 'operator', kind_: (p1 || m) }; }
-      }
-    },
-    'a': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': {} },
-        '1/2$': {
-          '0': { action_: '1/2' } },
-        'else': {
-          '0': { nextState: '1', revisit: true } },
-        '$(...)$': {
-          '*': { action_: 'tex-math tight', nextState: '1' } },
-        ',': {
-          '*': { action_: { type_: 'insert', option: 'commaDecimal' } } },
-        'else2': {
-          '*': { action_: 'copy' } }
-      }),
-      actions: {}
-    },
-    'o': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': {} },
-        '1/2$': {
-          '0': { action_: '1/2' } },
-        'else': {
-          '0': { nextState: '1', revisit: true } },
-        'letters': {
-          '*': { action_: 'rm' } },
-        '\\ca': {
-          '*': { action_: { type_: 'insert', option: 'circa' } } },
-        '\\x{}{}|\\x{}|\\x': {
-          '*': { action_: 'copy' } },
-        '${(...)}$|$(...)$': {
-          '*': { action_: 'tex-math' } },
-        '{(...)}': {
-          '*': { action_: '{text}' } },
-        'else2': {
-          '*': { action_: 'copy' } }
-      }),
-      actions: {}
-    },
-    'text': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': { action_: 'output' } },
-        '{...}': {
-          '*': { action_: 'text=' } },
-        '${(...)}$|$(...)$': {
-          '*': { action_: 'tex-math' } },
-        '\\greek': {
-          '*': { action_: [ 'output', 'rm' ] } },
-        '\\,|\\x{}{}|\\x{}|\\x': {
-          '*': { action_: [ 'output', 'copy' ] } },
-        'else': {
-          '*': { action_: 'text=' } }
-      }),
-      actions: {
-        'output': function (buffer) {
-          if (buffer.text_) {
-            /** @type {ParserOutput} */
-            var ret = { type_: 'text', p1: buffer.text_ };
-            for (var p in buffer) { delete buffer[p]; }
-            return ret;
-          }
-        }
-      }
-    },
-    'pq': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': {} },
-        'state of aggregation $': {
-          '*': { action_: 'state of aggregation' } },
-        'i$': {
-          '0': { nextState: '!f', revisit: true } },
-        '(KV letters),': {
-          '0': { action_: 'rm', nextState: '0' } },
-        'formula$': {
-          '0': { nextState: 'f', revisit: true } },
-        '1/2$': {
-          '0': { action_: '1/2' } },
-        'else': {
-          '0': { nextState: '!f', revisit: true } },
-        '${(...)}$|$(...)$': {
-          '*': { action_: 'tex-math' } },
-        '{(...)}': {
-          '*': { action_: 'text' } },
-        'a-z': {
-          'f': { action_: 'tex-math' } },
-        'letters': {
-          '*': { action_: 'rm' } },
-        '-9.,9': {
-          '*': { action_: '9,9'  } },
-        ',': {
-          '*': { action_: { type_: 'insert+p1', option: 'comma enumeration S' } } },
-        '\\color{(...)}{(...)}1|\\color(...){(...)}2': {
-          '*': { action_: 'color-output' } },
-        '\\color{(...)}0': {
-          '*': { action_: 'color0-output' } },
-        '\\ce{(...)}': {
-          '*': { action_: 'ce' } },
-        '\\,|\\x{}{}|\\x{}|\\x': {
-          '*': { action_: 'copy' } },
-        'else2': {
-          '*': { action_: 'copy' } }
-      }),
-      actions: {
-        'state of aggregation': function (buffer, m) {
-          return { type_: 'state of aggregation subscript', p1: mhchemParser.go(m, 'o') };
-        },
-        'color-output': function (buffer, m) {
-          return { type_: 'color', color1: m[0], color2: mhchemParser.go(m[1], 'pq') };
-        }
-      }
-    },
-    'bd': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': {} },
-        'x$': {
-          '0': { nextState: '!f', revisit: true } },
-        'formula$': {
-          '0': { nextState: 'f', revisit: true } },
-        'else': {
-          '0': { nextState: '!f', revisit: true } },
-        '-9.,9 no missing 0': {
-          '*': { action_: '9,9' } },
-        '.': {
-          '*': { action_: { type_: 'insert', option: 'electron dot' } } },
-        'a-z': {
-          'f': { action_: 'tex-math' } },
-        'x': {
-          '*': { action_: { type_: 'insert', option: 'KV x' } } },
-        'letters': {
-          '*': { action_: 'rm' } },
-        '\'': {
-          '*': { action_: { type_: 'insert', option: 'prime' } } },
-        '${(...)}$|$(...)$': {
-          '*': { action_: 'tex-math' } },
-        '{(...)}': {
-          '*': { action_: 'text' } },
-        '\\color{(...)}{(...)}1|\\color(...){(...)}2': {
-          '*': { action_: 'color-output' } },
-        '\\color{(...)}0': {
-          '*': { action_: 'color0-output' } },
-        '\\ce{(...)}': {
-          '*': { action_: 'ce' } },
-        '\\,|\\x{}{}|\\x{}|\\x': {
-          '*': { action_: 'copy' } },
-        'else2': {
-          '*': { action_: 'copy' } }
-      }),
-      actions: {
-        'color-output': function (buffer, m) {
-          return { type_: 'color', color1: m[0], color2: mhchemParser.go(m[1], 'bd') };
-        }
-      }
-    },
-    'oxidation': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': {} },
-        'roman numeral': {
-          '*': { action_: 'roman-numeral' } },
-        '${(...)}$|$(...)$': {
-          '*': { action_: 'tex-math' } },
-        'else': {
-          '*': { action_: 'copy' } }
-      }),
-      actions: {
-        'roman-numeral': function (buffer, m) { return { type_: 'roman numeral', p1: m || "" }; }
-      }
-    },
-    'tex-math': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': { action_: 'output' } },
-        '\\ce{(...)}': {
-          '*': { action_: [ 'output', 'ce' ] } },
-        '{...}|\\,|\\x{}{}|\\x{}|\\x': {
-          '*': { action_: 'o=' } },
-        'else': {
-          '*': { action_: 'o=' } }
-      }),
-      actions: {
-        'output': function (buffer) {
-          if (buffer.o) {
-            /** @type {ParserOutput} */
-            var ret = { type_: 'tex-math', p1: buffer.o };
-            for (var p in buffer) { delete buffer[p]; }
-            return ret;
-          }
-        }
-      }
-    },
-    'tex-math tight': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': { action_: 'output' } },
-        '\\ce{(...)}': {
-          '*': { action_: [ 'output', 'ce' ] } },
-        '{...}|\\,|\\x{}{}|\\x{}|\\x': {
-          '*': { action_: 'o=' } },
-        '-|+': {
-          '*': { action_: 'tight operator' } },
-        'else': {
-          '*': { action_: 'o=' } }
-      }),
-      actions: {
-        'tight operator': function (buffer, m) { buffer.o = (buffer.o || "") + "{"+m+"}"; },
-        'output': function (buffer) {
-          if (buffer.o) {
-            /** @type {ParserOutput} */
-            var ret = { type_: 'tex-math', p1: buffer.o };
-            for (var p in buffer) { delete buffer[p]; }
-            return ret;
-          }
-        }
-      }
-    },
-    '9,9': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': {} },
-        ',': {
-          '*': { action_: 'comma' } },
-        'else': {
-          '*': { action_: 'copy' } }
-      }),
-      actions: {
-        'comma': function () { return { type_: 'commaDecimal' }; }
-      }
-    },
-    //#endregion
-    //
-    // \pu state machines
-    //
-    //#region pu
-    'pu': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': { action_: 'output' } },
-        'space$': {
-          '*': { action_: [ 'output', 'space' ] } },
-        '{[(|)]}': {
-          '0|a': { action_: 'copy' } },
-        '(-)(9)^(-9)': {
-          '0': { action_: 'number^', nextState: 'a' } },
-        '(-)(9.,9)(e)(99)': {
-          '0': { action_: 'enumber', nextState: 'a' } },
-        'space': {
-          '0|a': {} },
-        'pm-operator': {
-          '0|a': { action_: { type_: 'operator', option: '\\pm' }, nextState: '0' } },
-        'operator': {
-          '0|a': { action_: 'copy', nextState: '0' } },
-        '//': {
-          'd': { action_: 'o=', nextState: '/' } },
-        '/': {
-          'd': { action_: 'o=', nextState: '/' } },
-        '{...}|else': {
-          '0|d': { action_: 'd=', nextState: 'd' },
-          'a': { action_: [ 'space', 'd=' ], nextState: 'd' },
-          '/|q': { action_: 'q=', nextState: 'q' } }
-      }),
-      actions: {
-        'enumber': function (buffer, m) {
-          /** @type {ParserOutput[]} */
-          var ret = [];
-          if (m[0] === "+-"  ||  m[0] === "+/-") {
-            ret.push("\\pm ");
-          } else if (m[0]) {
-            ret.push(m[0]);
-          }
-          if (m[1]) {  // 1.2
-            mhchemParser.concatArray(ret, mhchemParser.go(m[1], 'pu-9,9'));
-            if (m[2]) {
-              if (m[2].match(/[,.]/)) {  // 1.23456(0.01111)
-                mhchemParser.concatArray(ret, mhchemParser.go(m[2], 'pu-9,9'));
-              } else {  // 1.23456(1111)  - without spacings
-                ret.push(m[2]);
-              }
-            }
-            if (m[3] || m[4]) {  // 1.2e7  1.2x10^7
-              if (m[3] === "e"  ||  m[4] === "*") {
-                ret.push({ type_: 'cdot' });
-              } else {
-                ret.push({ type_: 'times' });
-              }
-            }
-          }
-          if (m[5]) {  // 10^7
-            ret.push("10^{"+m[5]+"}");
-          }
-          return ret;
-        },
-        'number^': function (buffer, m) {
-          /** @type {ParserOutput[]} */
-          var ret = [];
-          if (m[0] === "+-"  ||  m[0] === "+/-") {
-            ret.push("\\pm ");
-          } else if (m[0]) {
-            ret.push(m[0]);
-          }
-          mhchemParser.concatArray(ret, mhchemParser.go(m[1], 'pu-9,9'));
-          ret.push("^{"+m[2]+"}");
-          return ret;
-        },
-        'operator': function (buffer, m, p1) { return { type_: 'operator', kind_: (p1 || m) }; },
-        'space': function () { return { type_: 'pu-space-1' }; },
-        'output': function (buffer) {
-          /** @type {ParserOutput | ParserOutput[]} */
-          var ret;
-          var md = mhchemParser.patterns.match_('{(...)}', buffer.d || "");
-          if (md  &&  md.remainder === '') { buffer.d = md.match_; }
-          var mq = mhchemParser.patterns.match_('{(...)}', buffer.q || "");
-          if (mq  &&  mq.remainder === '') { buffer.q = mq.match_; }
-          if (buffer.d) {
-            buffer.d = buffer.d.replace(/\u00B0C|\^oC|\^{o}C/g, "{}^{\\circ}C");
-            buffer.d = buffer.d.replace(/\u00B0F|\^oF|\^{o}F/g, "{}^{\\circ}F");
-          }
-          if (buffer.q) {  // fraction
-            buffer.q = buffer.q.replace(/\u00B0C|\^oC|\^{o}C/g, "{}^{\\circ}C");
-            buffer.q = buffer.q.replace(/\u00B0F|\^oF|\^{o}F/g, "{}^{\\circ}F");
-            var b5 = {
-              d: mhchemParser.go(buffer.d, 'pu'),
-              q: mhchemParser.go(buffer.q, 'pu')
-            };
-            if (buffer.o === '//') {
-              ret = { type_: 'pu-frac', p1: b5.d, p2: b5.q };
-            } else {
-              ret = b5.d;
-              if (b5.d.length > 1  ||  b5.q.length > 1) {
-                ret.push({ type_: ' / ' });
-              } else {
-                ret.push({ type_: '/' });
-              }
-              mhchemParser.concatArray(ret, b5.q);
-            }
-          } else {  // no fraction
-            ret = mhchemParser.go(buffer.d, 'pu-2');
-          }
-          for (var p in buffer) { delete buffer[p]; }
-          return ret;
-        }
-      }
-    },
-    'pu-2': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '*': { action_: 'output' } },
-        '*': {
-          '*': { action_: [ 'output', 'cdot' ], nextState: '0' } },
-        '\\x': {
-          '*': { action_: 'rm=' } },
-        'space': {
-          '*': { action_: [ 'output', 'space' ], nextState: '0' } },
-        '^{(...)}|^(-1)': {
-          '1': { action_: '^(-1)' } },
-        '-9.,9': {
-          '0': { action_: 'rm=', nextState: '0' },
-          '1': { action_: '^(-1)', nextState: '0' } },
-        '{...}|else': {
-          '*': { action_: 'rm=', nextState: '1' } }
-      }),
-      actions: {
-        'cdot': function () { return { type_: 'tight cdot' }; },
-        '^(-1)': function (buffer, m) { buffer.rm += "^{"+m+"}"; },
-        'space': function () { return { type_: 'pu-space-2' }; },
-        'output': function (buffer) {
-          /** @type {ParserOutput | ParserOutput[]} */
-          var ret = [];
-          if (buffer.rm) {
-            var mrm = mhchemParser.patterns.match_('{(...)}', buffer.rm || "");
-            if (mrm  &&  mrm.remainder === '') {
-              ret = mhchemParser.go(mrm.match_, 'pu');
-            } else {
-              ret = { type_: 'rm', p1: buffer.rm };
-            }
-          }
-          for (var p in buffer) { delete buffer[p]; }
-          return ret;
-        }
-      }
-    },
-    'pu-9,9': {
-      transitions: mhchemParser.createTransitions({
-        'empty': {
-          '0': { action_: 'output-0' },
-          'o': { action_: 'output-o' } },
-        ',': {
-          '0': { action_: [ 'output-0', 'comma' ], nextState: 'o' } },
-        '.': {
-          '0': { action_: [ 'output-0', 'copy' ], nextState: 'o' } },
-        'else': {
-          '*': { action_: 'text=' } }
-      }),
-      actions: {
-        'comma': function () { return { type_: 'commaDecimal' }; },
-        'output-0': function (buffer) {
-          /** @type {ParserOutput[]} */
-          var ret = [];
-          buffer.text_ = buffer.text_ || "";
-          if (buffer.text_.length > 4) {
-            var a = buffer.text_.length % 3;
-            if (a === 0) { a = 3; }
-            for (var i=buffer.text_.length-3; i>0; i-=3) {
-              ret.push(buffer.text_.substr(i, 3));
-              ret.push({ type_: '1000 separator' });
-            }
-            ret.push(buffer.text_.substr(0, a));
-            ret.reverse();
-          } else {
-            ret.push(buffer.text_);
-          }
-          for (var p in buffer) { delete buffer[p]; }
-          return ret;
-        },
-        'output-o': function (buffer) {
-          /** @type {ParserOutput[]} */
-          var ret = [];
-          buffer.text_ = buffer.text_ || "";
-          if (buffer.text_.length > 4) {
-            var a = buffer.text_.length - 3;
-            for (var i=0; i<a; i+=3) {
-              ret.push(buffer.text_.substr(i, 3));
-              ret.push({ type_: '1000 separator' });
-            }
-            ret.push(buffer.text_.substr(i));
-          } else {
-            ret.push(buffer.text_);
-          }
-          for (var p in buffer) { delete buffer[p]; }
-          return ret;
-        }
-      }
-    }
-    //#endregion
-  };
-
-  //
-  // texify: Take MhchemParser output and convert it to TeX
-  //
-  /** @type {Texify} */
-  var texify = {
-    go: function (input, isInner) {  // (recursive, max 4 levels)
-      if (!input) { return ""; }
-      var res = "";
-      var cee = false;
-      for (var i=0; i < input.length; i++) {
-        var inputi = input[i];
-        if (typeof inputi === "string") {
-          res += inputi;
-        } else {
-          res += texify._go2(inputi);
-          if (inputi.type_ === '1st-level escape') { cee = true; }
-        }
-      }
-      if (!isInner && !cee && res) {
-        res = "{" + res + "}";
-      }
-      return res;
-    },
-    _goInner: function (input) {
-      if (!input) { return input; }
-      return texify.go(input, true);
-    },
-    _go2: function (buf) {
-      /** @type {undefined | string} */
-      var res;
-      switch (buf.type_) {
-        case 'chemfive':
-          res = "";
-          var b5 = {
-            a: texify._goInner(buf.a),
-            b: texify._goInner(buf.b),
-            p: texify._goInner(buf.p),
-            o: texify._goInner(buf.o),
-            q: texify._goInner(buf.q),
-            d: texify._goInner(buf.d)
-          };
-          //
-          // a
-          //
-          if (b5.a) {
-            if (b5.a.match(/^[+\-]/)) { b5.a = "{"+b5.a+"}"; }
-            res += b5.a + "\\,";
-          }
-          //
-          // b and p
-          //
-          if (b5.b || b5.p) {
-            res += "{\\vphantom{X}}";
-            res += "^{\\hphantom{"+(b5.b||"")+"}}_{\\hphantom{"+(b5.p||"")+"}}";
-            res += "{\\vphantom{X}}";
-            res += "^{\\smash[t]{\\vphantom{2}}\\llap{"+(b5.b||"")+"}}";
-            res += "_{\\vphantom{2}\\llap{\\smash[t]{"+(b5.p||"")+"}}}";
-          }
-          //
-          // o
-          //
-          if (b5.o) {
-            if (b5.o.match(/^[+\-]/)) { b5.o = "{"+b5.o+"}"; }
-            res += b5.o;
-          }
-          //
-          // q and d
-          //
-          if (buf.dType === 'kv') {
-            if (b5.d || b5.q) {
-              res += "{\\vphantom{X}}";
-            }
-            if (b5.d) {
-              res += "^{"+b5.d+"}";
-            }
-            if (b5.q) {
-              res += "_{\\smash[t]{"+b5.q+"}}";
-            }
-          } else if (buf.dType === 'oxidation') {
-            if (b5.d) {
-              res += "{\\vphantom{X}}";
-              res += "^{"+b5.d+"}";
-            }
-            if (b5.q) {
-              res += "{\\vphantom{X}}";
-              res += "_{\\smash[t]{"+b5.q+"}}";
-            }
-          } else {
-            if (b5.q) {
-              res += "{\\vphantom{X}}";
-              res += "_{\\smash[t]{"+b5.q+"}}";
-            }
-            if (b5.d) {
-              res += "{\\vphantom{X}}";
-              res += "^{"+b5.d+"}";
-            }
-          }
-          break;
-        case 'rm':
-          res = "\\mathrm{"+buf.p1+"}";
-          break;
-        case 'text':
-          if (buf.p1.match(/[\^_]/)) {
-            buf.p1 = buf.p1.replace(" ", "~").replace("-", "\\text{-}");
-            res = "\\mathrm{"+buf.p1+"}";
-          } else {
-            res = "\\text{"+buf.p1+"}";
-          }
-          break;
-        case 'roman numeral':
-          res = "\\mathrm{"+buf.p1+"}";
-          break;
-        case 'state of aggregation':
-          res = "\\mskip2mu "+texify._goInner(buf.p1);
-          break;
-        case 'state of aggregation subscript':
-          res = "\\mskip1mu "+texify._goInner(buf.p1);
-          break;
-        case 'bond':
-          res = texify._getBond(buf.kind_);
-          if (!res) {
-            throw ["MhchemErrorBond", "mhchem Error. Unknown bond type (" + buf.kind_ + ")"];
-          }
-          break;
-        case 'frac':
-          var c = "\\frac{" + buf.p1 + "}{" + buf.p2 + "}";
-          res = "\\mathchoice{\\textstyle"+c+"}{"+c+"}{"+c+"}{"+c+"}";
-          break;
-        case 'pu-frac':
-          var d = "\\frac{" + texify._goInner(buf.p1) + "}{" + texify._goInner(buf.p2) + "}";
-          res = "\\mathchoice{\\textstyle"+d+"}{"+d+"}{"+d+"}{"+d+"}";
-          break;
-        case 'tex-math':
-          res = buf.p1 + " ";
-          break;
-        case 'frac-ce':
-          res = "\\frac{" + texify._goInner(buf.p1) + "}{" + texify._goInner(buf.p2) + "}";
-          break;
-        case 'overset':
-          res = "\\overset{" + texify._goInner(buf.p1) + "}{" + texify._goInner(buf.p2) + "}";
-          break;
-        case 'underset':
-          res = "\\underset{" + texify._goInner(buf.p1) + "}{" + texify._goInner(buf.p2) + "}";
-          break;
-        case 'underbrace':
-          res =  "\\underbrace{" + texify._goInner(buf.p1) + "}_{" + texify._goInner(buf.p2) + "}";
-          break;
-        case 'color':
-          res = "{\\color{" + buf.color1 + "}{" + texify._goInner(buf.color2) + "}}";
-          break;
-        case 'color0':
-          res = "\\color{" + buf.color + "}";
-          break;
-        case 'arrow':
-          var b6 = {
-            rd: texify._goInner(buf.rd),
-            rq: texify._goInner(buf.rq)
-          };
-          var arrow = texify._getArrow(buf.r);
-          if (b6.rd || b6.rq) {
-            if (buf.r === "<=>"  ||  buf.r === "<=>>"  ||  buf.r === "<<=>"  ||  buf.r === "<-->") {
-              // arrows that cannot stretch correctly yet, https://github.com/mathjax/MathJax/issues/1491
-              arrow = "\\long"+arrow;
-              if (b6.rd) { arrow = "\\overset{"+b6.rd+"}{"+arrow+"}"; }
-              if (b6.rq) {
-                if (buf.r === "<-->") {
-                  arrow = "\\underset{\\lower2mu{"+b6.rq+"}}{"+arrow+"}";
-                } else {
-                  arrow = "\\underset{\\lower6mu{"+b6.rq+"}}{"+arrow+"}";  // align with ->[][under]
-                }
-              }
-              arrow = " {}\\mathrel{"+arrow+"}{} ";
-            } else {
-              if (b6.rq) { arrow += "[{"+b6.rq+"}]"; }
-              arrow += "{"+b6.rd+"}";
-              arrow = " {}\\mathrel{\\x"+arrow+"}{} ";
-            }
-          } else {
-            arrow = " {}\\mathrel{\\long"+arrow+"}{} ";
-          }
-          res = arrow;
-          break;
-        case 'operator':
-          res = texify._getOperator(buf.kind_);
-          break;
-        case '1st-level escape':
-          res = buf.p1+" ";  // &, \\\\, \\hlin
-          break;
-        case 'space':
-          res = " ";
-          break;
-        case 'entitySkip':
-          res = "~";
-          break;
-        case 'pu-space-1':
-          res = "~";
-          break;
-        case 'pu-space-2':
-          res = "\\mkern3mu ";
-          break;
-        case '1000 separator':
-          res = "\\mkern2mu ";
-          break;
-        case 'commaDecimal':
-          res = "{,}";
-          break;
-          case 'comma enumeration L':
-          res = "{"+buf.p1+"}\\mkern6mu ";
-          break;
-        case 'comma enumeration M':
-          res = "{"+buf.p1+"}\\mkern3mu ";
-          break;
-        case 'comma enumeration S':
-          res = "{"+buf.p1+"}\\mkern1mu ";
-          break;
-        case 'hyphen':
-          res = "\\text{-}";
-          break;
-        case 'addition compound':
-          res = "\\,{\\cdot}\\,";
-          break;
-        case 'electron dot':
-          res = "\\mkern1mu \\bullet\\mkern1mu ";
-          break;
-        case 'KV x':
-          res = "{\\times}";
-          break;
-        case 'prime':
-          res = "\\prime ";
-          break;
-        case 'cdot':
-          res = "\\cdot ";
-          break;
-        case 'tight cdot':
-          res = "\\mkern1mu{\\cdot}\\mkern1mu ";
-          break;
-        case 'times':
-          res = "\\times ";
-          break;
-        case 'circa':
-          res = "{\\sim}";
-          break;
-        case '^':
-          res = "uparrow";
-          break;
-        case 'v':
-          res = "downarrow";
-          break;
-        case 'ellipsis':
-          res = "\\ldots ";
-          break;
-        case '/':
-          res = "/";
-          break;
-        case ' / ':
-          res = "\\,/\\,";
-          break;
-        default:
-          assertNever(buf);
-          throw ["MhchemBugT", "mhchem bug T. Please report."];  // Missing texify rule or unknown MhchemParser output
-      }
-      assertString(res);
-      return res;
-    },
-    _getArrow: function (a) {
-      switch (a) {
-        case "->": return "rightarrow";
-        case "\u2192": return "rightarrow";
-        case "\u27F6": return "rightarrow";
-        case "<-": return "leftarrow";
-        case "<->": return "leftrightarrow";
-        case "<-->": return "leftrightarrows";
-        case "<=>": return "rightleftharpoons";
-        case "\u21CC": return "rightleftharpoons";
-        case "<=>>": return "Rightleftharpoons";
-        case "<<=>": return "Leftrightharpoons";
-        default:
-          assertNever(a);
-          throw ["MhchemBugT", "mhchem bug T. Please report."];
-      }
-    },
-    _getBond: function (a) {
-      switch (a) {
-        case "-": return "{-}";
-        case "1": return "{-}";
-        case "=": return "{=}";
-        case "2": return "{=}";
-        case "#": return "{\\equiv}";
-        case "3": return "{\\equiv}";
-        case "~": return "{\\tripledash}";
-        case "~-": return "{\\rlap{\\lower.1em{-}}\\raise.1em{\\tripledash}}";
-        case "~=": return "{\\rlap{\\lower.2em{-}}\\rlap{\\raise.2em{\\tripledash}}-}";
-        case "~--": return "{\\rlap{\\lower.2em{-}}\\rlap{\\raise.2em{\\tripledash}}-}";
-        case "-~-": return "{\\rlap{\\lower.2em{-}}\\rlap{\\raise.2em{-}}\\tripledash}";
-        case "...": return "{{\\cdot}{\\cdot}{\\cdot}}";
-        case "....": return "{{\\cdot}{\\cdot}{\\cdot}{\\cdot}}";
-        case "->": return "{\\rightarrow}";
-        case "<-": return "{\\leftarrow}";
-        case "<": return "{<}";
-        case ">": return "{>}";
-        default:
-          assertNever(a);
-          throw ["MhchemBugT", "mhchem bug T. Please report."];
-      }
-    },
-    _getOperator: function (a) {
-      switch (a) {
-        case "+": return " {}+{} ";
-        case "-": return " {}-{} ";
-        case "=": return " {}={} ";
-        case "<": return " {}<{} ";
-        case ">": return " {}>{} ";
-        case "<<": return " {}\\ll{} ";
-        case ">>": return " {}\\gg{} ";
-        case "\\pm": return " {}\\pm{} ";
-        case "\\approx": return " {}\\approx{} ";
-        case "$\\approx$": return " {}\\approx{} ";
-        case "v": return " \\downarrow{} ";
-        case "(v)": return " \\downarrow{} ";
-        case "^": return " \\uparrow{} ";
-        case "(^)": return " \\uparrow{} ";
-        default:
-          assertNever(a);
-          throw ["MhchemBugT", "mhchem bug T. Please report."];
-      }
-    }
-  };
-
-  //
-  // Helpers for code anaylsis
-  // Will show type error at calling position
-  //
-  /** @param {number} a */
-  function assertNever(a) {}
-  /** @param {string} a */
-  function assertString(a) {}
-
-  //
-  // MathJax definitions
-  //
-  MathJax.Extension["TeX/mhchem"].CE = CE;
-
-  /***************************************************************************/
-
-  TEX.Definitions.Add({
-    macros: {
-      //
-      //  Set up the macros for chemistry
-      //
-      ce: "CE",
-      pu: "PU",
-
-      //
-      //  Make these load AMSmath package (redefined below when loaded)
-      //
-      xleftrightarrow:    ["Extension", "AMSmath"],
-      xrightleftharpoons: ["Extension", "AMSmath"],
-      xRightleftharpoons: ["Extension", "AMSmath"],
-      xLeftrightharpoons: ["Extension", "AMSmath"],
-
-      //  FIXME:  These don't work well in FF NativeMML mode
-      longrightleftharpoons: ["Macro", "\\stackrel{\\textstyle{-}\\!\\!{\\rightharpoonup}}{\\smash{{\\leftharpoondown}\\!\\!{-}}}"],
-      longRightleftharpoons: ["Macro", "\\stackrel{\\textstyle{-}\\!\\!{\\rightharpoonup}}{\\smash{\\leftharpoondown}}"],
-      longLeftrightharpoons: ["Macro", "\\stackrel{\\textstyle\\vphantom{{-}}{\\rightharpoonup}}{\\smash{{\\leftharpoondown}\\!\\!{-}}}"],
-      longleftrightarrows:   ["Macro", "\\raise-3mu{\\stackrel{\\longrightarrow}{\\raise2mu{\\smash{\\longleftarrow}}}}"],
-
-      //
-      //  Needed for \bond for the ~ forms
-      //  Not perfectly aligned when zoomed in, but on 100%
-      //
-      tripledash: ["Macro", "\\vphantom{-}\\raise2mu{\\kern2mu\\tiny\\text{-}\\kern1mu\\text{-}\\kern1mu\\text{-}\\kern2mu}"]
-    }
-  }, null, true);
-
-  if (!MathJax.Extension["TeX/AMSmath"]) {
-    TEX.Definitions.Add({
-      macros: {
-        xrightarrow: ["Extension", "AMSmath"],
-        xleftarrow:  ["Extension", "AMSmath"]
-      }
-    }, null, true);
-  }
-
-  //
-  //  These arrows need to wait until AMSmath is loaded
-  //
-  MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function () {
-    TEX.Definitions.Add({
-      macros: {
-        //
-        //  Some of these are hacks for now
-        //
-        xleftrightarrow:    ["xArrow", 0x2194, 6, 6],
-        xrightleftharpoons: ["xArrow", 0x21CC, 5, 7],  // FIXME:  doesn't stretch in HTML-CSS output
-        xRightleftharpoons: ["xArrow", 0x21CC, 5, 7],  // FIXME:  how should this be handled?
-        xLeftrightharpoons: ["xArrow", 0x21CC, 5, 7]
-      }
-    }, null, true);
-  });
-
-  TEX.Parse.Augment({
-
-    //
-    //  Implements \ce and friends
-    //
-    CE: function (name) {
-      var arg = this.GetArgument(name);
-      var tex = CE(arg).Parse();
-      this.string = tex + this.string.substr(this.i); this.i = 0;
-    },
-
-    PU: function (name) {
-      var arg = this.GetArgument(name);
-      var tex = CE(arg).Parse('pu');
-      this.string = tex + this.string.substr(this.i); this.i = 0;
-    }
-
-  });
-
-  //
-  //  Indicate that the extension is ready
-  //
-  MathJax.Hub.Startup.signal.Post("TeX mhchem Ready");
-
-});
-
-MathJax.Ajax.loadComplete("[mhchem]/mhchem.js");
